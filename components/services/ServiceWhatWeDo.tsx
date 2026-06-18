@@ -27,7 +27,7 @@ const ServiceWhatWeDo = ({ category, services }: ServiceWhatWeDoProps) => {
 
                     <div className="space-y-6 text-gray-300 text-lg md:text-xl leading-relaxed max-w-2xl">
                         <p>
-                            It starts with an <span className="font-bold text-white">understanding of what's at stake.</span> Whether you're rebuilding legacy code or starting from zero, we bring your vision to life with a clear roadmap.
+                            It starts with an <span className="font-bold text-white">understanding of what&apos;s at stake.</span> Whether you&apos;re rebuilding legacy code or starting from zero, we bring your vision to life with a clear roadmap.
                         </p>
 
                         <p>
@@ -42,6 +42,8 @@ const ServiceWhatWeDo = ({ category, services }: ServiceWhatWeDoProps) => {
                         {services.map((service, index) => {
                             const isOpen = openIndex === index;
                             const description = service.description || service.shortDescription || "Comprehensive digital solution tailored to your business needs.";
+                            const headerId = `accordion-header-${index}`;
+                            const contentId = `accordion-content-${index}`;
 
                             return (
                                 <div
@@ -51,6 +53,9 @@ const ServiceWhatWeDo = ({ category, services }: ServiceWhatWeDoProps) => {
                                     <button
                                         onClick={() => setOpenIndex(isOpen ? -1 : index)}
                                         className="w-full flex items-center justify-between text-left group py-3"
+                                        aria-expanded={isOpen}
+                                        aria-controls={contentId}
+                                        id={headerId}
                                     >
                                         <div className="flex items-center gap-4">
                                             <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-colors duration-300 ${isOpen ? 'bg-primary/20' : 'bg-white/5'}`}>
@@ -75,6 +80,9 @@ const ServiceWhatWeDo = ({ category, services }: ServiceWhatWeDoProps) => {
                                                 animate={{ height: "auto", opacity: 1 }}
                                                 exit={{ height: 0, opacity: 0 }}
                                                 transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
+                                                id={contentId}
+                                                role="region"
+                                                aria-labelledby={headerId}
                                             >
                                                 <div className="pt-2 pb-6 pl-16">
                                                     <p className="text-base md:text-lg text-gray-400 leading-relaxed">

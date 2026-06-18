@@ -250,12 +250,12 @@ export default function ContactSection({
           <div className="absolute inset-0 bg-linear-to-b from-white/5 to-transparent lg:rounded-4xl -z-10" />
             <div>
               <h2 className="text-4xl md:text-7xl font-bold tracking-tight mb-6">
-                Let's work <br />
+                Let&apos;s work <br />
                 <span className="text-primary">together.</span>
               </h2>
               <p className="text-lg text-gray-400 max-w-md">
-                Have a project in mind? We'd love to hear about it. Fill out the
-                form and we'll get back to you as soon as possible.
+                Have a project in mind? We&apos;d love to hear about it. Fill out the
+                form and we&apos;ll get back to you as soon as possible.
               </p>
             </div>
 

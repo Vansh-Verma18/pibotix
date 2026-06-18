@@ -2,6 +2,7 @@
 import { Star, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 
 const FloatingLines = dynamic(() => import("../ui/FloatingLinesBackground"), {
   ssr: false,
@@ -56,9 +57,11 @@ const HeroSection = () => {
           <div className="hidden md:flex items-center justify-center gap-6">
             <div className="flex flex-row items-center gap-3 px-6 py-4 rounded-2xl transition-all duration-300 hover:bg-white/5 cursor-pointer">
               <div className="w-14 h-14 flex items-center justify-center bg-white rounded-full p-2">
-                <img
+                <Image
                   src="/icons/google.svg"
                   alt="Google"
+                  width={40}
+                  height={40}
                   className="w-full h-full object-contain"
                 />
               </div>
@@ -120,9 +123,11 @@ const HeroSection = () => {
                 <Star className="w-7 h-7 fill-white text-white" />
               </div>
               <div className="w-10 h-10 flex items-center justify-center bg-white rounded-full p-2">
-                <img
+                <Image
                   src="/icons/google.svg"
                   alt="Google"
+                  width={24}
+                  height={24}
                   className="w-full h-full object-contain"
                 />
               </div>

@@ -19,7 +19,7 @@ const CustomImage = ({ className, priority = false, alt, title, ...props }: Cust
       priority={priority}
       onLoad={() => setIsLoading(false)}
       className={cn(
-        "object-contain transition duration-300",
+        "object-contain transition duration-300 w-auto h-auto",
         isLoading ? "blur-md scale-105" : "blur-0 scale-100",
         className
       )}

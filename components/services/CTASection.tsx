@@ -8,8 +8,6 @@ interface CTASectionProps {
 }
 
 export default function CTASection({
-    title,
-    description,
     buttonText,
 }: CTASectionProps) {
     return (

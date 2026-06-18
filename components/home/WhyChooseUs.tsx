@@ -1,5 +1,5 @@
 "use client";
-import { Code2, Zap, Users, HeadphonesIcon, TrendingUp, Award } from 'lucide-react';
+import { Code2, Zap, Users, Award } from 'lucide-react';
 
 const WhyChooseUs = () => {
     return (

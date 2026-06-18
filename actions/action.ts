@@ -50,7 +50,7 @@ export async function submitContactForm(prevState: ContactState, formData: FormD
 
         return { success: true, message: "Thank you! We will get back to you soon." };
 
-    } catch (err: any) {
+    } catch (err: unknown) {
         console.error("Sheets Error:", err);
         return { success: false, error: "Failed to submit form. Try again." };
     }

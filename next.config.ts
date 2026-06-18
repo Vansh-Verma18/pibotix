@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 import path from "path";
+import createBundleAnalyzer from "@next/bundle-analyzer";
+import glob from "glob-all";
+import { PurgeCSSPlugin } from "purgecss-webpack-plugin";
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
+const withBundleAnalyzer = createBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 })
 
@@ -27,9 +30,6 @@ const nextConfig: NextConfig = {
   },
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {
-      const glob = require('glob-all');
-      const { PurgeCSSPlugin } = require('purgecss-webpack-plugin');
-
       config.plugins.push(
         new PurgeCSSPlugin({
           paths: glob.sync([
@@ -40,6 +40,7 @@ const nextConfig: NextConfig = {
           safelist: {
             standard: ['html', 'body', /^dark/],
           },
+          blocklist: [],
         })
       );
     }

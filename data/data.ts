@@ -401,7 +401,17 @@ export const categories = [
 ];
 
 
-export const metadataMap: Record<string, any> = {
+type PageMetadata = {
+  description: string;
+  keywords: string;
+  metaTitle: string;
+  title: string;
+  url: string;
+  feed?: string;
+  author?: string;
+};
+
+export const metadataMap: Record<string, PageMetadata> = {
   home: {
     description: "Vortexio Solutions - Transform your ideas into powerful digital solutions with cutting-edge web development, mobile apps, blockchain, and AI/ML services. Expert team delivering innovative technology solutions.",
     keywords: "vortexio solutions, vortexio, web development, mobile app development, blockchain solutions, AI ML services, software development, digital transformation, tech solutions, custom software, app development company",
@@ -447,7 +457,15 @@ export const metadataMap: Record<string, any> = {
 };
 
 
-export const testimonials: Record<string, any>[] = [
+type Testimonial = {
+  text: string;
+  image: string;
+  imageTitle: string;
+  name: string;
+  role: string;
+};
+
+export const testimonials: Testimonial[] = [
   {
     text: "Vortexio Solutions transformed our legacy systems into a modern, scalable architecture. Their team's expertise in cloud solutions is unmatched.",
     image: "https://randomuser.me/api/portraits/men/32.jpg",

@@ -38,7 +38,7 @@ export default function ServiceWhyChooseUs() {
                         Why Partner With <span className="text-primary">Vortexio?</span>
                     </h2>
                     <p className="text-gray-300 max-w-2xl text-lg">
-                        We don't just build software; we build engineered solutions that drive
+                        We don&apos;t just build software; we build engineered solutions that drive
                         business success.
                     </p>
                 </div>

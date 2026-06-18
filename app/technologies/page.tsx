@@ -1,53 +1,104 @@
-import CustomImage from "@/components/ui/CustomImage";
-import { categories } from "@/data/data";
-import generatePageMetadata from "@/utils/generateMetadata";
+import { Code2, Cpu, Database, Network } from 'lucide-react';
+import Link from 'next/link';
 
-export const metadata = generatePageMetadata("techstack");
+export const metadata = {
+  title: 'Technology Stack | AutoForge',
+  description: 'Explore the industry-leading hardware and software platforms we use to build enterprise automation systems.',
+};
 
-export default function TechStack() {
+const TECH_CATEGORIES = [
+  {
+    category: 'Industrial Robotics',
+    icon: Cpu,
+    platforms: [
+      { name: 'FANUC', desc: 'Industry standard for high-payload and high-speed robotic applications.' },
+      { name: 'ABB', desc: 'Advanced motion control and collaborative robotic (Cobot) solutions.' },
+      { name: 'KUKA', desc: 'Precision kinematics and heavy-duty 6-axis robotic cells.' },
+      { name: 'Universal Robots', desc: 'Flexible, safe collaborative robots for dynamic environments.' }
+    ]
+  },
+  {
+    category: 'PLC & Control Systems',
+    icon: Database,
+    platforms: [
+      { name: 'Siemens TIA Portal', desc: 'Comprehensive engineering framework for S7 controllers.' },
+      { name: 'Allen-Bradley / Rockwell', desc: 'Studio 5000 environment for ControlLogix and CompactLogix.' },
+      { name: 'Beckhoff', desc: 'PC-based control systems using TwinCAT for high-performance automation.' },
+      { name: 'Omron', desc: 'EtherCAT-based machine control and drive technology.' }
+    ]
+  },
+  {
+    category: 'Machine Vision & AI',
+    icon: Code2,
+    platforms: [
+      { name: 'Cognex', desc: 'Industry-leading 2D and 3D vision systems for inspection and guidance.' },
+      { name: 'Keyence', desc: 'High-speed code reading, measurement, and defect detection.' },
+      { name: 'TensorFlow / PyTorch', desc: 'Custom deep learning models for complex anomaly detection.' },
+      { name: 'OpenCV', desc: 'Open-source computer vision library for custom algorithmic development.' }
+    ]
+  },
+  {
+    category: 'Industrial IoT & SCADA',
+    icon: Network,
+    platforms: [
+      { name: 'Inductive Automation (Ignition)', desc: 'Web-based industrial platform for SCADA, IIoT, and MES.' },
+      { name: 'MQTT / OPC-UA', desc: 'Standardized protocols for secure machine-to-machine communication.' },
+      { name: 'AWS IoT / Azure IoT', desc: 'Cloud platforms for predictive maintenance and fleet fleet management.' },
+      { name: 'Wonderware (AVEVA)', desc: 'Enterprise HMI and supervisory control.' }
+    ]
+  }
+];
+
+export default function TechnologiesPage() {
   return (
-    <main className="w-full md:container md:mx-auto  px-4 md:px-8 lg:px-10">
-      <h2 className="text-4xl md:text-[56px] lg:text-[76px] leading-tight font-black text-center my-10 md:my-14 text-white">
-        <span className="md:hidden">OUR</span> TECH <span className="text-primary">STACK</span> <span className="max-md:hidden">OVERVIEW</span>
-      </h2>
+    <div className="pt-32 pb-24 bg-background min-h-screen">
+      <div className="container mx-auto px-6">
+        
+        <div className="max-w-4xl mx-auto text-center mb-20">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Our Technology Stack</h1>
+          <p className="text-xl text-gray-400">
+            We are platform-agnostic integrators. We select the best hardware and software for your specific application to ensure maximum performance and longevity.
+          </p>
+        </div>
 
-      {categories.map((category: { title: string; tools: { name: string; description: string; icon: string; iconTitle?: string }[] }, idx: number) => (
-        <div key={idx} className="mb-16">
-          <h3 className="text-center text-gray-400 tracking-[0.6rem] text-xl font-medium mb-10 uppercase">
-            {category.title}
-          </h3>
-
-          <div className="grid grid-cols-2 md:flex md:flex-wrap justify-center mx-auto gap-4 md:gap-6">
-            {category.tools.map((tool: { name: string; description: string; icon: string; iconTitle?: string }, i: number) => (
-              <div
-                key={i}
-                className="relative w-full md:w-[18rem] rounded-3xl p-4 md:p-6 flex flex-col justify-between transition-all duration-300 hover:scale-105 group bg-white/5 backdrop-blur-xl border border-primary/30 hover:border-primary shadow-lg hover:shadow-md"
-              >
-                <div className="relative z-10">
-                  <div className="mb-3 p-2 md:p-3 rounded-2xl w-fit bg-white/10 backdrop-blur-sm border border-white/20 group-hover:border-primary/50 transition-colors duration-300">
-                    <CustomImage
-                      src={tool.icon}
-                      alt={tool.name}
-                      title={tool.iconTitle || `Vortexio Solutions - ${tool.name}`}
-                      width={60}
-                      height={60}
-                      className="object-contain w-12 h-12 md:w-16 md:h-16"
-                    />
+        <div className="space-y-16 max-w-5xl mx-auto">
+          {TECH_CATEGORIES.map((category) => {
+            const Icon = category.icon;
+            return (
+              <div key={category.category} className="bg-card border border-white/10 rounded-3xl p-8 lg:p-12">
+                <div className="flex items-center gap-4 mb-8 pb-8 border-b border-white/10">
+                  <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center">
+                    <Icon className="w-8 h-8 text-primary" />
                   </div>
-                  <div>
-                    <h4 className="font-semibold mb-1 text-base md:text-lg text-white">
-                      {tool.name}
-                    </h4>
-                    <p className="hidden md:block text-sm text-gray-300">
-                      {tool.description}
-                    </p>
-                  </div>
+                  <h2 className="text-3xl font-bold text-white">{category.category}</h2>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {category.platforms.map((platform) => (
+                    <div key={platform.name} className="flex gap-4 group">
+                      <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0 group-hover:scale-150 transition-transform" />
+                      <div>
+                        <h3 className="text-xl font-bold text-white mb-2">{platform.name}</h3>
+                        <p className="text-gray-400 leading-relaxed">{platform.desc}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
-      ))}
-    </main>
+
+        <div className="mt-20 text-center">
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center gap-3 bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105"
+          >
+            Discuss Your Tech Requirements
+          </Link>
+        </div>
+
+      </div>
+    </div>
   );
 }

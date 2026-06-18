@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-    const baseUrl = "https://www.vortexiosolutions.com";
+    const baseUrl = "https://www.autoforge.com";
 
     return {
         rules: [
@@ -11,29 +11,10 @@ export default function robots(): MetadataRoute.Robots {
                 disallow: [
                     "/_next/",
                     "/api/",
+                    "/admin/",
                     "/*.json$",
                     "/*.xml$",
                 ],
-            },
-            {
-                userAgent: "GPTBot",
-                allow: "/",
-            },
-            {
-                userAgent: "ChatGPT-User",
-                allow: "/",
-            },
-            {
-                userAgent: "OAI-SearchBot",
-                allow: "/",
-            },
-            {
-                userAgent: "PerplexityBot",
-                allow: "/",
-            },
-            {
-                userAgent: "Google-Extended",
-                allow: "/",
             },
             {
                 userAgent: "Googlebot",
@@ -42,19 +23,7 @@ export default function robots(): MetadataRoute.Robots {
             {
                 userAgent: "Bingbot",
                 allow: "/",
-            },
-            {
-                userAgent: "AhrefsBot",
-                crawlDelay: 10,
-            },
-            {
-                userAgent: "MJ12bot",
-                disallow: "/",
-            },
-            {
-                userAgent: "SemrushBot",
-                crawlDelay: 10,
-            },
+            }
         ],
         sitemap: `${baseUrl}/sitemap.xml`,
         host: baseUrl,
