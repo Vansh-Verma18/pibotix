@@ -207,7 +207,7 @@ export default function CaseStudyDetailPage({ params }: { params: { slug: string
         
         {/* CTA Section */}
         <div className="bg-gradient-to-br from-card to-background border border-white/10 rounded-3xl p-12 text-center max-w-4xl mx-auto shadow-2xl relative overflow-hidden">
-           <div className="absolute inset-0 bg-[url('/light-full-vortexio.svg')] bg-center opacity-5 z-0" />
+           <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] z-0" />
            <div className="relative z-10">
              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Facing Similar Challenges?</h2>
              <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">

@@ -23,7 +23,7 @@ export default function IndustriesPage() {
       
       {/* Custom Consultation CTA */}
       <section className="py-24 bg-gradient-to-b from-background to-primary/10 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/light-full-vortexio.svg')] bg-center opacity-5 z-0" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] z-0" />
         <div className="container mx-auto px-6 relative z-10 text-center">
           <div className="max-w-4xl mx-auto bg-card/50 backdrop-blur-xl border border-white/10 rounded-[3rem] p-12 md:p-20 shadow-2xl shadow-primary/20">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
