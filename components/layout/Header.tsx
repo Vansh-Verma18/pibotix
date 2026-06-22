@@ -101,10 +101,10 @@ export default function Header() {
         {/* CTA & Mobile Toggle */}
         <div className="flex items-center gap-4">
           <Link
-            href="/admin"
+            href="/admin/login"
             className="hidden md:inline-flex h-10 items-center justify-center rounded-md border border-white/20 bg-transparent px-6 text-sm font-medium text-white transition-colors hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
           >
-            Admin
+            Login
           </Link>
           <Link
             href="/contact"
@@ -139,10 +139,10 @@ export default function Header() {
               <Link href="/technologies" className="text-lg font-medium text-gray-300">Technologies</Link>
               <div className="mt-4 flex flex-col gap-2">
                 <Link
-                  href="/admin"
+                  href="/admin/login"
                   className="inline-flex h-12 w-full items-center justify-center rounded-md border border-white/20 bg-transparent px-6 text-base font-medium text-white"
                 >
-                  Admin
+                  Login
                 </Link>
                 <Link
                   href="/contact"
