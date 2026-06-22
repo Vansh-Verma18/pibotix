@@ -35,6 +35,10 @@ async function connectToDatabase() {
 
   try {
     cached.conn = await cached.promise;
+    // Run seeder asynchronously without blocking connection
+    import('./seed').then(({ seedDatabase }) => {
+      seedDatabase().catch(console.error);
+    });
   } catch (err) {
     cached.promise = null;
     throw err;

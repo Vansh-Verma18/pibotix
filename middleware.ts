@@ -17,7 +17,27 @@ export async function middleware(request: NextRequest) {
     }
 
     try {
-      await jwtVerify(token, SECRET_KEY);
+      const { payload } = await jwtVerify(token, SECRET_KEY);
+      const role = payload.role as string;
+
+      // Define routes restricted to superadmin and admin
+      const restrictedAdminRoutes = [
+        '/admin/users',
+        '/admin/settings',
+        '/admin/team',
+        '/admin/blog',
+        '/admin/case-studies',
+        '/admin/testimonials'
+      ];
+
+      // If a standard user tries to access a restricted admin route, redirect to their basic dashboard
+      if (role === 'user') {
+        const isRestricted = restrictedAdminRoutes.some(r => path.startsWith(r));
+        if (isRestricted) {
+          return NextResponse.redirect(new URL('/admin', request.url));
+        }
+      }
+
       return NextResponse.next();
     } catch (error) {
       return NextResponse.redirect(new URL('/admin/login', request.url));

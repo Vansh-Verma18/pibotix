@@ -6,19 +6,36 @@ const SECRET_KEY = new TextEncoder().encode(
 );
 
 export async function createSession(payload: any) {
-  const token = await new SignJWT(payload)
+  // Short-lived Access Token (15m)
+  const accessToken = await new SignJWT(payload)
     .setProtectedHeader({ alg: 'HS256' })
     .setIssuedAt()
-    .setExpirationTime('24h')
+    .setExpirationTime('15m')
+    .sign(SECRET_KEY);
+
+  // Long-lived Refresh Token (7d)
+  const refreshToken = await new SignJWT({ userId: payload.userId })
+    .setProtectedHeader({ alg: 'HS256' })
+    .setIssuedAt()
+    .setExpirationTime('7d')
     .sign(SECRET_KEY);
 
   const cookieStore = await cookies();
-  cookieStore.set('admin_session', token, {
+  
+  cookieStore.set('admin_session', accessToken, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
     path: '/',
-    maxAge: 60 * 60 * 24, // 24 hours
+    maxAge: 15 * 60, // 15 minutes
+  });
+
+  cookieStore.set('refresh_token', refreshToken, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    path: '/',
+    maxAge: 7 * 24 * 60 * 60, // 7 days
   });
 }
 
@@ -41,4 +58,5 @@ export async function getSession() {
 export async function destroySession() {
   const cookieStore = await cookies();
   cookieStore.delete('admin_session');
+  cookieStore.delete('refresh_token');
 }
