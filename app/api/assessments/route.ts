@@ -103,7 +103,7 @@ export async function POST(req: NextRequest) {
       });
 
       await transporter.sendMail({
-        from: `"AutoForge System" <${process.env.SMTP_USER}>`,
+        from: `"Pibotix System" <${process.env.SMTP_USER}>`,
         to: process.env.ADMIN_EMAIL || process.env.SMTP_USER,
         subject: `New Automation Assessment: ${body.companyName}`,
         html: `

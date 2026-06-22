@@ -19,7 +19,7 @@ export interface ISettings extends Document {
 }
 
 const SettingsSchema: Schema = new Schema({
-  siteName: { type: String, default: 'AutoForge CMS' },
+  siteName: { type: String, default: 'Pibotix CMS' },
   contactEmail: { type: String, default: 'contact@example.com' },
   supportPhone: { type: String, default: '+1 (555) 000-0000' },
   socialLinks: {
@@ -29,7 +29,7 @@ const SettingsSchema: Schema = new Schema({
     instagram: { type: String },
   },
   seo: {
-    metaTitle: { type: String, default: 'AutoForge - Advanced Robotics Solutions' },
+    metaTitle: { type: String, default: 'Pibotix - Advanced Robotics Solutions' },
     metaDescription: { type: String, default: 'Leading provider of automated robotics systems for manufacturing.' },
   },
 }, { timestamps: true });

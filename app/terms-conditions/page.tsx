@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Terms & Conditions | AutoForge',
+  title: 'Terms & Conditions | Pibotix',
 };
 
 export default function TermsConditionsPage() {
@@ -11,7 +11,7 @@ export default function TermsConditionsPage() {
         
         <h2 className="text-2xl font-bold text-white mt-12 mb-4">1. Acceptance of Terms</h2>
         <p className="text-gray-400">
-          By accessing and using the AutoForge website and our services, you accept and agree to be bound by the terms and provision of this agreement.
+          By accessing and using the Pibotix website and our services, you accept and agree to be bound by the terms and provision of this agreement.
         </p>
 
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">2. Intellectual Property</h2>
@@ -21,7 +21,7 @@ export default function TermsConditionsPage() {
 
         <h2 className="text-2xl font-bold text-white mt-8 mb-4">3. Limitation of Liability</h2>
         <p className="text-gray-400">
-          AutoForge shall not be liable for any special or consequential damages that result from the use of, or the inability to use, the materials on this site or the performance of the products.
+          Pibotix shall not be liable for any special or consequential damages that result from the use of, or the inability to use, the materials on this site or the performance of the products.
         </p>
       </div>
     </div>

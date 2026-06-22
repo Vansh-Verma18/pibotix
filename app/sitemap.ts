@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = "https://www.autoforge.com";
+    const baseUrl = "https://www.pibotix.com";
     
     // In production, fetch this from MongoDB:
     // const services = await Service.find({ isActive: true }).select('slug updatedAt');

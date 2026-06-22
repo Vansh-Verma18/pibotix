@@ -53,7 +53,7 @@ const ALL_SERVICES = [
 ];
 
 export const metadata = {
-  title: 'Automation Services | AutoForge',
+  title: 'Automation Services | Pibotix',
   description: 'Explore our comprehensive range of industrial automation services including robotics, PLC programming, and AI vision systems.',
 };
 

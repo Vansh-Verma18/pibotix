@@ -2,7 +2,7 @@ import ContactForm from '@/components/contact/ContactForm';
 import { Mail, MapPin, Phone } from 'lucide-react';
 
 export const metadata = {
-  title: 'Contact Engineering | AutoForge',
+  title: 'Contact Engineering | Pibotix',
   description: 'Reach out to our engineering team to discuss your industrial automation, robotics, or PLC programming needs.',
 };
 
@@ -44,8 +44,8 @@ export default function ContactPage() {
               <div>
                 <h3 className="text-white font-bold mb-2">Email Us</h3>
                 <p className="text-gray-400 text-sm leading-relaxed">
-                  Sales: sales@autoforge.com<br />
-                  Support: support@autoforge.com
+                  Sales: sales@pibotix.com<br />
+                  Support: support@pibotix.com
                 </p>
               </div>
             </div>

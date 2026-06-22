@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'About Us | AutoForge',
+  title: 'About Us | Pibotix',
   description: 'Learn about our engineering team, our history, and our mission to transform global manufacturing through intelligent automation.',
 };
 
@@ -13,7 +13,7 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto text-center mb-20">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Pioneering the Future of Manufacturing</h1>
           <p className="text-xl text-gray-400">
-            AutoForge was founded by veteran engineers frustrated by the inefficiencies of legacy manufacturing. Today, we are a leading systems integrator delivering world-class robotics and AI solutions.
+            Pibotix was founded by veteran engineers frustrated by the inefficiencies of legacy manufacturing. Today, we are a leading systems integrator delivering world-class robotics and AI solutions.
           </p>
         </div>
 

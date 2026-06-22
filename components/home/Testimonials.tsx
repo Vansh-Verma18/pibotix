@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const TESTIMONIALS = [
   {
-    quote: "AutoForge completely transformed our end-of-line packaging. The dual KUKA robots they installed increased our throughput by 60% and eliminated ergonomic injuries overnight.",
+    quote: "Pibotix completely transformed our end-of-line packaging. The dual KUKA robots they installed increased our throughput by 60% and eliminated ergonomic injuries overnight.",
     author: "Director of Operations",
     company: "Tier 1 Food & Beverage Manufacturer"
   },

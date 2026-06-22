@@ -19,9 +19,9 @@ export default function Footer() {
           <div>
             <Link href="/" className="flex items-center gap-2 group mb-6">
               <div className="w-8 h-8 bg-primary rounded flex items-center justify-center transform group-hover:rotate-12 transition-transform">
-                <span className="text-white font-bold text-xl leading-none font-mono">A</span>
+                <span className="text-white font-bold text-xl leading-none font-mono">P</span>
               </div>
-              <span className="font-bold text-xl tracking-tight text-white">AutoForge</span>
+              <span className="font-bold text-xl tracking-tight text-white">Pibotix</span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               Transforming manufacturing with intelligent robotics, automation, and industrial IoT solutions. Partner with us for next-generation operational efficiency.
@@ -72,7 +72,7 @@ export default function Footer() {
               </p>
               <p>
                 <strong className="text-white block mb-1">Contact</strong>
-                hello@autoforge.com<br />
+                hello@pibotix.com<br />
                 +1 (800) 555-0199
               </p>
             </address>
@@ -82,7 +82,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-gray-500 text-sm">
-            &copy; {currentYear} AutoForge Industrial Solutions. All rights reserved.
+            &copy; {currentYear} Pibotix Industrial Solutions. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
             <Link href="/privacy-policy" className="text-gray-500 hover:text-white transition-colors">Privacy Policy</Link>

@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-    const baseUrl = "https://www.autoforge.com";
+    const baseUrl = "https://www.pibotix.com";
 
     return {
         rules: [

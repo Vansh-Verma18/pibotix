@@ -48,10 +48,10 @@ export default function AdminLayout({
         {/* Logo */}
         <div className="flex items-center gap-2 mb-8 md:mb-10">
           <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center shadow-lg shadow-primary/20">
-            <span className="text-white font-bold font-mono text-sm">A</span>
+            <span className="text-white font-bold font-mono text-sm">P</span>
           </div>
           <div>
-            <span className="font-bold text-base tracking-tight text-white">AutoForge CMS</span>
+            <span className="font-bold text-base tracking-tight text-white">Pibotix CMS</span>
             <p className="text-xs text-gray-500 -mt-0.5">Admin Panel</p>
           </div>
         </div>

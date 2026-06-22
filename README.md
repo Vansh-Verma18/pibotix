@@ -1,6 +1,6 @@
-# 🚀 AutoForge CMS & Automation Readiness Assessment Tool
+# 🚀 Pibotix CMS & Automation Readiness Assessment Tool
 
-AutoForge CMS is a full-featured Content Management System (CMS) and administration panel built for industrial automation and robotics solution providers. It features a modern, user-facing **Automation Readiness Assessment Tool** and a powerful admin portal to track client analytics, manage site content, and follow up on leads.
+Pibotix CMS is a full-featured Content Management System (CMS) and administration panel built for industrial automation and robotics solution providers. It features a modern, user-facing **Automation Readiness Assessment Tool** and a powerful admin portal to track client analytics, manage site content, and follow up on leads.
 
 Created by **Vansh Verma**.
 

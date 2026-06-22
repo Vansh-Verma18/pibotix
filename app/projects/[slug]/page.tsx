@@ -15,7 +15,7 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   if (!project) return { title: "Project Not Found" };
   
   return {
-    title: `${project.title} | AutoForge Projects`,
+    title: `${project.title} | Pibotix Projects`,
     description: project.overview,
   };
 }

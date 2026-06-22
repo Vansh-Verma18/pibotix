@@ -53,7 +53,7 @@ export default function AdminLogin() {
           <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
             <Lock className="w-5 h-5 text-white" />
           </div>
-          <span className="font-bold text-2xl tracking-tight text-white">AutoForge Admin</span>
+          <span className="font-bold text-2xl tracking-tight text-white">Pibotix Admin</span>
         </div>
 
         {error && (

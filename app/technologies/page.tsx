@@ -2,7 +2,7 @@ import { Code2, Cpu, Database, Network } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Technology Stack | AutoForge',
+  title: 'Technology Stack | Pibotix',
   description: 'Explore the industry-leading hardware and software platforms we use to build enterprise automation systems.',
 };
 

@@ -15,7 +15,7 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   if (!caseStudy) return { title: "Case Study Not Found" };
   
   return {
-    title: `${caseStudy.title} | AutoForge Case Studies`,
+    title: `${caseStudy.title} | Pibotix Case Studies`,
     description: caseStudy.problemStatement,
   };
 }

@@ -41,9 +41,9 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
           <div className="w-8 h-8 bg-primary rounded flex items-center justify-center transform group-hover:rotate-12 transition-transform">
-            <span className="text-white font-bold text-xl leading-none font-mono">A</span>
+            <span className="text-white font-bold text-xl leading-none font-mono">P</span>
           </div>
-          <span className="font-bold text-xl tracking-tight text-white">AutoForge</span>
+          <span className="font-bold text-xl tracking-tight text-white">Pibotix</span>
         </Link>
 
         {/* Desktop Navigation */}

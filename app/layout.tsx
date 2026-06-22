@@ -17,7 +17,7 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata = {
-  title: "AutoForge | Industrial Automation & Robotics",
+  title: "Pibotix | Industrial Automation & Robotics",
   description: "Enterprise-grade industrial automation, robotics, PLC programming, and AI solutions for modern manufacturing facilities.",
 };
 

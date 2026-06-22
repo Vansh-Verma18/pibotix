@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Privacy Policy | AutoForge',
+  title: 'Privacy Policy | Pibotix',
 };
 
 export default function PrivacyPolicyPage() {
