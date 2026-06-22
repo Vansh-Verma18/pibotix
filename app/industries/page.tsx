@@ -28,7 +28,7 @@ export default function IndustriesPage() {
           <div className="max-w-4xl mx-auto bg-card/50 backdrop-blur-xl border border-white/10 rounded-[3rem] p-12 md:p-20 shadow-2xl shadow-primary/20">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
               Ready to Automate Your <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">Industry Operations?</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-red-600">Industry Operations?</span>
             </h2>
             <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
               Our engineers are ready to discuss your specific challenges and architect a custom automation solution that drives measurable ROI.

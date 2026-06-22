@@ -15,7 +15,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-0 bg-background">
         <div className="absolute inset-0 bg-grid-white opacity-[0.03]" />
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[128px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-600/15 rounded-full blur-[128px]" />
         <div className="absolute top-1/2 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[200px]" />
       </div>
 

@@ -15,7 +15,7 @@ const FEATURED = [
       { label: 'Throughput', value: '+60%', icon: TrendingUp },
       { label: 'Cycle Time', value: '-40%', icon: Timer },
     ],
-    gradient: 'from-blue-600/20 to-primary/20',
+    gradient: 'from-neutral-800/50 to-primary/20',
   },
   {
     title: 'AI Vision Inspection for Electronics',
@@ -27,7 +27,7 @@ const FEATURED = [
       { label: 'Detection', value: '99.7%', icon: ShieldCheck },
       { label: 'Downtime', value: '-30%', icon: Timer },
     ],
-    gradient: 'from-purple-600/20 to-blue-600/20',
+    gradient: 'from-red-600/20 to-orange-600/20',
   },
   {
     title: 'Autonomous Warehouse Robotics',
@@ -39,7 +39,7 @@ const FEATURED = [
       { label: 'Speed', value: '3x', icon: TrendingUp },
       { label: 'Accuracy', value: '99.9%', icon: ShieldCheck },
     ],
-    gradient: 'from-emerald-600/20 to-teal-600/20',
+    gradient: 'from-neutral-800/40 to-neutral-700/20',
   },
 ];
 
@@ -75,7 +75,7 @@ export default function FeaturedCaseStudies() {
           >
             <Link
               href="/case-studies"
-              className="inline-flex items-center gap-2 text-primary font-semibold hover:text-blue-400 transition-colors whitespace-nowrap"
+              className="inline-flex items-center gap-2 text-primary font-semibold hover:text-red-400 transition-colors whitespace-nowrap"
             >
               View All Case Studies <ArrowUpRight className="w-4 h-4" />
             </Link>

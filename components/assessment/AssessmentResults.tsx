@@ -85,11 +85,11 @@ export default function AssessmentResults({ data }: { data: IAssessment }) {
             </div>
             <h3 className="text-gray-400 text-sm font-medium mb-2 uppercase tracking-wider">Digital Transformation</h3>
             <div className="flex items-baseline gap-2">
-              <span className="text-5xl font-black text-blue-500">{data.digitalTransformationScore}</span>
+              <span className="text-5xl font-black text-primary">{data.digitalTransformationScore}</span>
               <span className="text-xl text-gray-500">/ 100</span>
             </div>
             <div className="w-full bg-gray-800 h-2 mt-4 rounded-full overflow-hidden">
-              <div className="bg-blue-500 h-full" style={{ width: `${data.digitalTransformationScore}%` }}></div>
+              <div className="bg-primary h-full" style={{ width: `${data.digitalTransformationScore}%` }}></div>
             </div>
           </div>
         </div>

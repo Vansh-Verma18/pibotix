@@ -66,7 +66,7 @@ export default function CaseStudyDetailPage({ params }: { params: { slug: string
               </div>
               <div className="bg-card border border-white/10 px-6 py-4 rounded-2xl flex-1 min-w-[200px]">
                 <span className="block text-gray-500 text-sm uppercase tracking-wider mb-2">Productivity</span>
-                <span className="text-3xl font-bold text-blue-400">+{caseStudy.productivityIncrease}</span>
+                <span className="text-3xl font-bold text-red-400">+{caseStudy.productivityIncrease}</span>
               </div>
             </div>
           </div>

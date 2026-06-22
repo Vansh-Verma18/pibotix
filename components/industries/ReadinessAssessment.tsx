@@ -47,7 +47,7 @@ export default function ReadinessAssessment() {
     <section className="py-24 bg-card border-t border-white/5 relative overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/10 rounded-full blur-[100px]" />
-      <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px]" />
+      <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-primary/10 rounded-full blur-[100px]" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto">

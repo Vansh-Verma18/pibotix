@@ -17,7 +17,7 @@ const WhyChooseUs = () => {
             </div>
 
             <div className='hidden md:grid mt-10 w-full grid-cols-3 gap-6 lg:gap-10 auto-rows-[280px]'>
-                <div className="relative bg-blue-200/20 rounded-2xl p-6 lg:p-8 overflow-hidden">
+                <div className="relative bg-white/5 rounded-2xl p-6 lg:p-8 overflow-hidden">
                     <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full border-2 border-white/20 flex items-center justify-center mb-4">
                         <Users className="w-6 h-6 lg:w-7 lg:h-7 text-white" />
                     </div>
@@ -27,7 +27,7 @@ const WhyChooseUs = () => {
                     </p>
                 </div>
 
-                <div className="relative bg-blue-200/20 rounded-2xl p-6 lg:p-8 overflow-hidden">
+                <div className="relative bg-white/5 rounded-2xl p-6 lg:p-8 overflow-hidden">
                     <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full border-2 border-white/20 flex items-center justify-center mb-4">
                         <Zap className="w-6 h-6 lg:w-7 lg:h-7 text-white" />
                     </div>
@@ -55,7 +55,7 @@ const WhyChooseUs = () => {
                     </div>
                 </div>
 
-                <div className="relative bg-blue-200/20 rounded-2xl p-6 lg:p-8 overflow-hidden col-span-2">
+                <div className="relative bg-white/5 rounded-2xl p-6 lg:p-8 overflow-hidden col-span-2">
                     <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full border-2 border-white/20 flex items-center justify-center mb-4">
                         <Code2 className="w-6 h-6 lg:w-7 lg:h-7 text-white" />
                     </div>
@@ -67,7 +67,7 @@ const WhyChooseUs = () => {
             </div>
 
             <div className='md:hidden mt-10 w-full space-y-6'>
-                <div className="relative bg-blue-200/20 rounded-2xl p-6 overflow-hidden">
+                <div className="relative bg-white/5 rounded-2xl p-6 overflow-hidden">
                     <div className="w-12 h-12 rounded-full border-2 border-white/20 flex items-center justify-center mb-4">
                         <Users className="w-6 h-6 text-white" />
                     </div>
@@ -78,7 +78,7 @@ const WhyChooseUs = () => {
                 </div>
 
                 {/* Card 2 - Fast Delivery */}
-                <div className="relative bg-blue-200/20 rounded-2xl p-6 overflow-hidden">
+                <div className="relative bg-white/5 rounded-2xl p-6 overflow-hidden">
                     <div className="w-12 h-12 rounded-full border-2 border-white/20 flex items-center justify-center mb-4">
                         <Zap className="w-6 h-6 text-white" />
                     </div>
@@ -89,7 +89,7 @@ const WhyChooseUs = () => {
                 </div>
 
                 {/* Card 3 - Proven Solutions */}
-                <div className="relative bg-blue-200/20 rounded-2xl p-6 overflow-hidden">
+                <div className="relative bg-white/5 rounded-2xl p-6 overflow-hidden">
                     <div className="w-12 h-12 rounded-full border-2 border-white/20 flex items-center justify-center mb-4">
                         <Code2 className="w-6 h-6 text-white" />
                     </div>

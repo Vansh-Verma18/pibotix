@@ -18,7 +18,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
     const description = service.description || service.shortDescription;
 
     return (
-        <div className="relative bg-linear-to-br from-blue-200/20 to-blue-200/10 rounded-2xl overflow-hidden group hover:shadow-lg transition-all duration-300">
+        <div className="relative bg-linear-to-br from-white/5 to-white/0 rounded-2xl overflow-hidden group hover:shadow-lg transition-all duration-300">
             <div className="relative h-64 overflow-hidden bg-[#0e1b21]">
                 <CustomImage
                     src={service.src}

@@ -13,7 +13,7 @@ export default function ServiceStats() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 max-w-7xl mx-auto px-4">
                 {stats.map((stat, index) => (
                     <div key={index} className="flex flex-col items-center justify-center text-center">
-                        <span className="text-3xl md:text-5xl font-bold text-white mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">
+                        <span className="text-3xl md:text-5xl font-bold text-white mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-red-600">
                             {stat.value}
                         </span>
                         <span className="text-sm md:text-base text-gray-400 font-medium tracking-wide uppercase">

@@ -50,7 +50,7 @@ export default function ServiceWhyChooseUs() {
                             className="group relative bg-[#0B1221] border border-white/5 p-8 rounded-3xl min-h-[320px] flex flex-col justify-start"
                         >
                             <div className="relative z-10 w-full h-full flex flex-col">
-                                <div className="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-8">
+                                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8">
                                     <feature.icon className="w-8 h-8 text-primary" />
                                 </div>
                                 <h3 className="text-2xl font-bold text-white mb-4">

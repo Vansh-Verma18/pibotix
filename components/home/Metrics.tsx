@@ -29,7 +29,7 @@ export default function Metrics() {
               <div className="text-4xl md:text-6xl font-bold text-white mb-2 font-mono tracking-tighter">
                 {metric.value}
               </div>
-              <div className="text-blue-100 font-medium text-sm md:text-base uppercase tracking-wider">
+              <div className="text-gray-300 font-medium text-sm md:text-base uppercase tracking-wider">
                 {metric.label}
               </div>
             </motion.div>

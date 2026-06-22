@@ -100,7 +100,7 @@ export default function AdminAssessments() {
                       <div className="flex items-center gap-2">
                         <span className="text-gray-400 w-16 text-xs">Digital:</span>
                         <div className="flex-1 bg-gray-800 h-1.5 rounded-full w-24">
-                          <div className="bg-blue-500 h-full rounded-full" style={{ width: `${a.digitalTransformationScore}%` }}></div>
+                          <div className="bg-primary h-full rounded-full" style={{ width: `${a.digitalTransformationScore}%` }}></div>
                         </div>
                         <span className="font-mono text-white text-xs">{a.digitalTransformationScore}</span>
                       </div>

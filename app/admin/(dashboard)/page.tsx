@@ -93,7 +93,7 @@ export default function AnalyticsDashboard() {
         <div className="bg-card border border-white/10 p-6 rounded-2xl">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-gray-400 font-medium">Total Visitors</h3>
-            <Users className="w-5 h-5 text-blue-400" />
+            <Users className="w-5 h-5 text-red-400" />
           </div>
           <div className="text-3xl font-bold text-white mb-2">{stats.totalVisitors.toLocaleString()}</div>
           <p className="text-green-400 text-sm flex items-center gap-1">
@@ -208,7 +208,7 @@ export default function AnalyticsDashboard() {
               stats.services.map((service: any, idx: number) => (
                 <div key={idx} className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/5">
                   <span className="text-gray-300 font-medium">{service.title}</span>
-                  <span className="text-blue-400 text-xs px-2 py-1 bg-blue-500/10 rounded-full">Active</span>
+                  <span className="text-red-400 text-xs px-2 py-1 bg-primary/10 rounded-full">Active</span>
                 </div>
               ))
             ) : (
@@ -223,7 +223,7 @@ export default function AnalyticsDashboard() {
              <Link href="/admin/leads" className="p-4 bg-primary/10 border border-primary/20 rounded-xl text-primary font-medium hover:bg-primary/20 transition-colors flex flex-col items-center text-center gap-2">
                <Users className="w-6 h-6" /> View New Leads
              </Link>
-             <Link href="/admin/blog" className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl text-blue-400 font-medium hover:bg-blue-500/20 transition-colors flex flex-col items-center text-center gap-2">
+             <Link href="/admin/blog" className="p-4 bg-primary/10 border border-primary/20 rounded-xl text-red-400 font-medium hover:bg-primary/15 transition-colors flex flex-col items-center text-center gap-2">
                <FileText className="w-6 h-6" /> Manage Blog
              </Link>
              <Link href="/admin/testimonials" className="p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-green-400 font-medium hover:bg-green-500/20 transition-colors flex flex-col items-center text-center gap-2">

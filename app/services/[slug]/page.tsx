@@ -121,7 +121,7 @@ export default async function ServiceDetailPage({ params }: { params: { slug: st
                 <ul className="space-y-3 text-gray-400">
                   {service.features.map((feat: string, i: number) => (
                     <li key={i} className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-blue-500" /> {feat}
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary" /> {feat}
                     </li>
                   ))}
                 </ul>

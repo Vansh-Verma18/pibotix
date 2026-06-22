@@ -22,7 +22,7 @@ export default function Industries() {
             <p className="text-gray-400 text-lg mb-8 leading-relaxed">
               We deliver specialized automation solutions tailored to the unique regulatory, throughput, and quality demands of modern manufacturing sectors.
             </p>
-            <a href="/industries" className="inline-flex items-center text-primary font-semibold hover:text-blue-400 transition-colors">
+            <a href="/industries" className="inline-flex items-center text-primary font-semibold hover:text-red-400 transition-colors">
               Explore Industry Solutions →
             </a>
           </div>

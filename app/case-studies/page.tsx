@@ -150,7 +150,7 @@ export default function CaseStudiesPage() {
                     </div>
                     <div className="bg-white/5 border border-white/5 rounded-xl p-4">
                       <span className="block text-gray-500 text-xs uppercase tracking-wider mb-1">Productivity</span>
-                      <span className="text-blue-400 font-bold">+{cs.productivityIncrease}</span>
+                      <span className="text-red-400 font-bold">+{cs.productivityIncrease}</span>
                     </div>
                   </div>
 

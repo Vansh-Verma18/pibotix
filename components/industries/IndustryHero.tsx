@@ -39,7 +39,7 @@ export default function IndustryHero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
           >
-            Engineering <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">Excellence</span> Across Industries
+            Engineering <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-red-600">Excellence</span> Across Industries
           </motion.h1>
 
           <motion.p

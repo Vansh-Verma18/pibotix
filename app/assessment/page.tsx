@@ -157,7 +157,7 @@ export default function AssessmentPage() {
     <div className="min-h-screen bg-[#0a0a0a] pt-32 pb-12 px-6 relative overflow-hidden flex flex-col items-center">
       {/* Background elements */}
       <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-2xl w-full relative z-10">
         <div className="text-center mb-10">
