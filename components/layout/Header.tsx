@@ -97,6 +97,9 @@ export default function Header() {
 
         {/* CTA & Mobile Toggle */}
         <div className="flex items-center gap-3">
+          <Link href="/admin/login" className="hidden md:inline-flex text-sm font-medium text-gray-300 hover:text-white transition-colors mr-2">
+            Login
+          </Link>
           <Link
             href="/assessment"
             className="hidden md:inline-flex h-10 items-center justify-center rounded-lg border border-primary/30 bg-primary/5 px-5 text-sm font-semibold text-primary transition-all hover:bg-primary/10 focus:outline-none"
@@ -135,6 +138,12 @@ export default function Header() {
               <Link href="/case-studies" className="text-lg font-medium text-gray-300">Case Studies</Link>
               <Link href="/technologies" className="text-lg font-medium text-gray-300">Technologies</Link>
               <div className="mt-4 flex flex-col gap-2">
+                <Link
+                  href="/admin/login"
+                  className="inline-flex h-12 w-full items-center justify-center rounded-lg border border-white/10 bg-white/5 px-6 text-base font-semibold text-white"
+                >
+                  Login
+                </Link>
                 <Link
                   href="/assessment"
                   className="inline-flex h-12 w-full items-center justify-center rounded-lg border border-primary/30 bg-primary/5 px-6 text-base font-semibold text-primary"
