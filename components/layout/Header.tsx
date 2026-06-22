@@ -101,6 +101,12 @@ export default function Header() {
         {/* CTA & Mobile Toggle */}
         <div className="flex items-center gap-4">
           <Link
+            href="/admin"
+            className="hidden md:inline-flex h-10 items-center justify-center rounded-md border border-white/20 bg-transparent px-6 text-sm font-medium text-white transition-colors hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
+          >
+            Admin
+          </Link>
+          <Link
             href="/contact"
             className="hidden md:inline-flex h-10 items-center justify-center rounded-md bg-primary px-6 text-sm font-medium text-white transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
           >
@@ -131,12 +137,20 @@ export default function Header() {
               <Link href="/industries" className="text-lg font-medium text-gray-300">Industries</Link>
               <Link href="/case-studies" className="text-lg font-medium text-gray-300">Case Studies</Link>
               <Link href="/technologies" className="text-lg font-medium text-gray-300">Technologies</Link>
-              <Link
-                href="/contact"
-                className="mt-4 inline-flex h-12 w-full items-center justify-center rounded-md bg-primary px-6 text-base font-medium text-white"
-              >
-                Get a Quote
-              </Link>
+              <div className="mt-4 flex flex-col gap-2">
+                <Link
+                  href="/admin"
+                  className="inline-flex h-12 w-full items-center justify-center rounded-md border border-white/20 bg-transparent px-6 text-base font-medium text-white"
+                >
+                  Admin
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex h-12 w-full items-center justify-center rounded-md bg-primary px-6 text-base font-medium text-white"
+                >
+                  Get a Quote
+                </Link>
+              </div>
             </div>
           </motion.div>
         )}
