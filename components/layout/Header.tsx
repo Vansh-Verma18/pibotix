@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
 
 const SERVICES = [
   { name: 'Industrial Robotics', href: '/services/industrial-robotics' },
@@ -96,18 +96,18 @@ export default function Header() {
         </nav>
 
         {/* CTA & Mobile Toggle */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <Link
-            href="/admin/login"
-            className="hidden md:inline-flex h-10 items-center justify-center rounded-md border border-white/20 bg-transparent px-6 text-sm font-medium text-white transition-colors hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
+            href="/assessment"
+            className="hidden md:inline-flex h-10 items-center justify-center rounded-lg border border-primary/30 bg-primary/5 px-5 text-sm font-semibold text-primary transition-all hover:bg-primary/10 focus:outline-none"
           >
-            Login
+            Free Assessment
           </Link>
           <Link
             href="/contact"
-            className="hidden md:inline-flex h-10 items-center justify-center rounded-md bg-primary px-6 text-sm font-medium text-white transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
+            className="hidden md:inline-flex h-10 items-center justify-center rounded-lg bg-primary px-5 text-sm font-semibold text-white transition-all hover:bg-primary/90 gap-1.5"
           >
-            Get a Quote
+            Get a Quote <ArrowRight className="w-4 h-4" />
           </Link>
           
           <button
@@ -136,16 +136,16 @@ export default function Header() {
               <Link href="/technologies" className="text-lg font-medium text-gray-300">Technologies</Link>
               <div className="mt-4 flex flex-col gap-2">
                 <Link
-                  href="/admin/login"
-                  className="inline-flex h-12 w-full items-center justify-center rounded-md border border-white/20 bg-transparent px-6 text-base font-medium text-white"
+                  href="/assessment"
+                  className="inline-flex h-12 w-full items-center justify-center rounded-lg border border-primary/30 bg-primary/5 px-6 text-base font-semibold text-primary"
                 >
-                  Login
+                  Free Assessment
                 </Link>
                 <Link
                   href="/contact"
-                  className="inline-flex h-12 w-full items-center justify-center rounded-md bg-primary px-6 text-base font-medium text-white"
+                  className="inline-flex h-12 w-full items-center justify-center rounded-lg bg-primary px-6 text-base font-semibold text-white gap-2"
                 >
-                  Get a Quote
+                  Get a Quote <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             </div>

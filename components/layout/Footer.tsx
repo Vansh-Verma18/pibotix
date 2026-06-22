@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Linkedin, Twitter, Youtube, Mail } from 'lucide-react';
 
 export default function Footer() {
   const pathname = usePathname();
@@ -23,14 +24,19 @@ export default function Footer() {
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               Transforming manufacturing with intelligent robotics, automation, and industrial IoT solutions. Partner with us for next-generation operational efficiency.
             </p>
-            <div className="flex items-center gap-4">
-              {/* Social Icons (Placeholders) */}
-              <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors cursor-pointer text-white">
-                in
-              </div>
-              <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors cursor-pointer text-white">
-                X
-              </div>
+            <div className="flex items-center gap-3">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors text-gray-400 hover:text-white">
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors text-gray-400 hover:text-white">
+                <Twitter className="w-4 h-4" />
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors text-gray-400 hover:text-white">
+                <Youtube className="w-4 h-4" />
+              </a>
+              <a href="mailto:hello@pibotix.com" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors text-gray-400 hover:text-white">
+                <Mail className="w-4 h-4" />
+              </a>
             </div>
           </div>
 
@@ -55,6 +61,7 @@ export default function Footer() {
               <li><Link href="/technologies" className="text-gray-400 hover:text-primary transition-colors text-sm">Technologies</Link></li>
               <li><Link href="/careers" className="text-gray-400 hover:text-primary transition-colors text-sm">Careers</Link></li>
               <li><Link href="/contact" className="text-gray-400 hover:text-primary transition-colors text-sm">Contact Us</Link></li>
+              <li><Link href="/assessment" className="text-gray-400 hover:text-primary transition-colors text-sm">Free Assessment</Link></li>
             </ul>
           </div>
 
@@ -64,13 +71,12 @@ export default function Footer() {
             <address className="not-italic text-sm text-gray-400 space-y-4">
               <p>
                 <strong className="text-white block mb-1">Headquarters</strong>
-                100 Automation Parkway<br />
-                Detroit, MI 48201
+                India
               </p>
               <p>
                 <strong className="text-white block mb-1">Contact</strong>
                 hello@pibotix.com<br />
-                +1 (800) 555-0199
+                +91 XXX-XXX-XXXX
               </p>
             </address>
           </div>
@@ -79,11 +85,12 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-gray-500 text-sm">
-            &copy; {currentYear} Pibotix Industrial Solutions. All rights reserved.
+            &copy; {currentYear} PiBotix Industrial Solutions. All rights reserved. Created by Vansh Verma.
           </p>
           <div className="flex gap-6 text-sm">
             <Link href="/privacy-policy" className="text-gray-500 hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="/terms-conditions" className="text-gray-500 hover:text-white transition-colors">Terms of Service</Link>
+            <Link href="/admin/login" className="text-gray-600 hover:text-gray-400 transition-colors">Admin</Link>
           </div>
         </div>
       </div>

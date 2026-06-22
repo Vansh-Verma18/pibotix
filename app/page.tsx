@@ -1,9 +1,11 @@
 import Hero from '@/components/home/Hero';
 import ServicesGrid from '@/components/home/ServicesGrid';
+import WhyPiBotix from '@/components/home/WhyPiBotix';
 import Industries from '@/components/home/Industries';
-import Metrics from '@/components/home/Metrics';
+import FeaturedCaseStudies from '@/components/home/FeaturedCaseStudies';
 import Timeline from '@/components/home/Timeline';
 import Testimonials from '@/components/home/Testimonials';
+import TechPartners from '@/components/home/TechPartners';
 import FAQ from '@/components/home/FAQ';
 import ContactCTA from '@/components/home/ContactCTA';
 
@@ -12,10 +14,12 @@ export default function HomePage() {
     <>
       <Hero />
       <ServicesGrid />
-      <Metrics />
+      <WhyPiBotix />
       <Industries />
+      <FeaturedCaseStudies />
       <Timeline />
       <Testimonials />
+      <TechPartners />
       <FAQ />
       <ContactCTA />
     </>
