@@ -40,7 +40,7 @@ export default function Header() {
       <div className="container mx-auto px-6 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <img src="/logo.png" alt="PiBotix Logo" className="h-14 w-auto object-contain" style={{mixBlendMode:'screen'}} />
+          <img src="/logo.png" alt="PiBotix Logo" className="h-16 w-auto object-contain" style={{mixBlendMode:'screen'}} />
         </Link>
 
         {/* Desktop Navigation */}
