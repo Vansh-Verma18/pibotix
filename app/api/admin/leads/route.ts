@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { dbConnect } from '@/lib/mongodb';
+import dbConnect from '@/lib/mongodb';
 import { Lead } from '@/lib/models/Lead';
 
 export async function GET(req: NextRequest) {

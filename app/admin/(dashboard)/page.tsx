@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { 
   Users, Activity, TrendingUp, MousePointerClick, 
-  ArrowUpRight, Download, BarChart3, Clock
+  ArrowUpRight, Download, BarChart3, Clock, FileText, Settings
 } from "lucide-react";
 import { 
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
-  BarChart, Bar, PieChart, Pie, Cell
+  PieChart, Pie, Cell
 } from 'recharts';
 
 // Mock Analytics Data
@@ -28,23 +29,45 @@ const sourceData = [
   { name: 'Social Media', value: 200, color: '#8b5cf6' },
 ];
 
-const topServices = [
-  { name: 'Robotic Welding', views: 12450 },
-  { name: 'Predictive Maintenance', views: 8900 },
-  { name: 'Warehouse AMRs', views: 7650 },
-  { name: 'AI Vision Inspection', views: 6420 },
-];
+
 
 export default function AnalyticsDashboard() {
   const [mounted, setMounted] = useState(false);
+  const [stats, setStats] = useState({ totalVisitors: 0, totalLeads: 0, conversionRate: 0, services: [] as any[] });
 
   useEffect(() => {
     setMounted(true);
+    fetch("/api/admin/analytics")
+      .then(res => res.json())
+      .then(data => {
+        if (!data.error) setStats(data);
+      });
   }, []);
 
-  const handleExport = () => {
-    // Dummy export functionality
-    alert("Exporting analytics report as CSV...");
+  const handleExport = async () => {
+    try {
+      const res = await fetch("/api/admin/analytics");
+      const data = await res.json();
+      const rows = [
+        ["Metric", "Value"],
+        ["Total Visitors", data.totalVisitors],
+        ["Total Leads", data.totalLeads],
+        ["Conversion Rate (%)", data.conversionRate],
+        ["", ""],
+        ["Top Services", ""],
+        ...(data.services || []).map((s: any) => [s.title, "Active"]),
+      ];
+      const csv = rows.map(r => r.join(",")).join("\n");
+      const blob = new Blob([csv], { type: "text/csv" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `analytics-report-${new Date().toISOString().split("T")[0]}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch {
+      alert("Export failed. Please try again.");
+    }
   };
 
   if (!mounted) return <div className="p-10 text-center text-gray-400">Loading Analytics...</div>;
@@ -72,7 +95,7 @@ export default function AnalyticsDashboard() {
             <h3 className="text-gray-400 font-medium">Total Visitors</h3>
             <Users className="w-5 h-5 text-blue-400" />
           </div>
-          <div className="text-3xl font-bold text-white mb-2">124,592</div>
+          <div className="text-3xl font-bold text-white mb-2">{stats.totalVisitors.toLocaleString()}</div>
           <p className="text-green-400 text-sm flex items-center gap-1">
             <TrendingUp className="w-4 h-4" /> +12.5% this month
           </p>
@@ -82,7 +105,7 @@ export default function AnalyticsDashboard() {
             <h3 className="text-gray-400 font-medium">Leads Generated</h3>
             <Activity className="w-5 h-5 text-green-400" />
           </div>
-          <div className="text-3xl font-bold text-white mb-2">3,039</div>
+          <div className="text-3xl font-bold text-white mb-2">{stats.totalLeads.toLocaleString()}</div>
           <p className="text-green-400 text-sm flex items-center gap-1">
             <TrendingUp className="w-4 h-4" /> +8.2% this month
           </p>
@@ -92,7 +115,7 @@ export default function AnalyticsDashboard() {
             <h3 className="text-gray-400 font-medium">Conversion Rate</h3>
             <MousePointerClick className="w-5 h-5 text-purple-400" />
           </div>
-          <div className="text-3xl font-bold text-white mb-2">2.44%</div>
+          <div className="text-3xl font-bold text-white mb-2">{stats.conversionRate}%</div>
           <p className="text-red-400 text-sm flex items-center gap-1">
             <TrendingUp className="w-4 h-4 rotate-180" /> -0.4% this month
           </p>
@@ -176,35 +199,39 @@ export default function AnalyticsDashboard() {
         <div className="bg-card border border-white/10 p-6 rounded-2xl">
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-lg font-bold text-white">Most Viewed Services</h3>
-            <button className="text-sm text-primary hover:underline flex items-center">
+            <Link href="/admin/services" className="text-sm text-primary hover:underline flex items-center">
               View All <ArrowUpRight className="w-3 h-3 ml-1" />
-            </button>
+            </Link>
           </div>
           <div className="space-y-4">
-            {topServices.map((service, idx) => (
-              <div key={idx} className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/5">
-                <span className="text-gray-300 font-medium">{service.name}</span>
-                <span className="text-white font-bold">{service.views.toLocaleString()} <span className="text-gray-500 text-sm font-normal">views</span></span>
-              </div>
-            ))}
+            {stats.services && stats.services.length > 0 ? (
+              stats.services.map((service: any, idx: number) => (
+                <div key={idx} className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/5">
+                  <span className="text-gray-300 font-medium">{service.title}</span>
+                  <span className="text-blue-400 text-xs px-2 py-1 bg-blue-500/10 rounded-full">Active</span>
+                </div>
+              ))
+            ) : (
+              <div className="p-4 text-center text-gray-500 text-sm">No services data yet. Add services to see them here.</div>
+            )}
           </div>
         </div>
 
         <div className="bg-card border border-white/10 p-6 rounded-2xl">
           <h3 className="text-lg font-bold text-white mb-6">Quick Actions</h3>
           <div className="grid grid-cols-2 gap-4">
-             <button className="p-4 bg-primary/10 border border-primary/20 rounded-xl text-primary font-medium hover:bg-primary/20 transition-colors flex flex-col items-center text-center gap-2">
+             <Link href="/admin/leads" className="p-4 bg-primary/10 border border-primary/20 rounded-xl text-primary font-medium hover:bg-primary/20 transition-colors flex flex-col items-center text-center gap-2">
                <Users className="w-6 h-6" /> View New Leads
-             </button>
-             <button className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl text-blue-400 font-medium hover:bg-blue-500/20 transition-colors flex flex-col items-center text-center gap-2">
-               <FileText className="w-6 h-6" /> Publish Blog Post
-             </button>
-             <button className="p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-green-400 font-medium hover:bg-green-500/20 transition-colors flex flex-col items-center text-center gap-2">
-               <BarChart3 className="w-6 h-6" /> Generate Report
-             </button>
-             <button className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-xl text-purple-400 font-medium hover:bg-purple-500/20 transition-colors flex flex-col items-center text-center gap-2">
+             </Link>
+             <Link href="/admin/blog" className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl text-blue-400 font-medium hover:bg-blue-500/20 transition-colors flex flex-col items-center text-center gap-2">
+               <FileText className="w-6 h-6" /> Manage Blog
+             </Link>
+             <Link href="/admin/testimonials" className="p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-green-400 font-medium hover:bg-green-500/20 transition-colors flex flex-col items-center text-center gap-2">
+               <BarChart3 className="w-6 h-6" /> Testimonials
+             </Link>
+             <Link href="/admin/settings" className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-xl text-purple-400 font-medium hover:bg-purple-500/20 transition-colors flex flex-col items-center text-center gap-2">
                <Settings className="w-6 h-6" /> System Settings
-             </button>
+             </Link>
           </div>
         </div>
 

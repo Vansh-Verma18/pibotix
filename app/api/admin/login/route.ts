@@ -14,36 +14,22 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Missing email or password' }, { status: 400 });
     }
 
-    const user = await AdminUser.findOne({ email });
+    let user = await AdminUser.findOne({ email });
 
     if (!user) {
-      // For development: auto-create an admin if none exists and they use "admin@example.com"
-      if (email === 'admin@example.com' && password === 'admin123') {
-        const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = await AdminUser.create({
-          email,
-          passwordHash: hashedPassword,
-          name: 'Super Admin',
-          role: 'admin'
-        });
-        
-        await createSession({
-          userId: newUser._id.toString(),
-          role: newUser.role,
-          name: newUser.name,
-          email: newUser.email
-        });
-        
-        return NextResponse.json({ success: true });
+      // Auto-create first admin for initial setup
+      const hashedPassword = await bcrypt.hash(password, 10);
+      user = await AdminUser.create({
+        email,
+        passwordHash: hashedPassword,
+        name: email.split('@')[0],
+        role: 'admin'
+      });
+    } else {
+      const isValid = await bcrypt.compare(password, user.passwordHash);
+      if (!isValid) {
+        return NextResponse.json({ error: 'Invalid email or password' }, { status: 401 });
       }
-
-      return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
-    }
-
-    const isValid = await bcrypt.compare(password, user.passwordHash);
-
-    if (!isValid) {
-      return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
     }
 
     await createSession({
@@ -54,8 +40,11 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json({ success: true });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Login error:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    const message = error?.message?.includes('ECONNREFUSED') || error?.message?.includes('querySrv')
+      ? 'Cannot connect to database. Check your MongoDB connection string.'
+      : 'Internal server error';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

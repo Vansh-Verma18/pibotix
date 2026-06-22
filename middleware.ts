@@ -9,7 +9,7 @@ const SECRET_KEY = new TextEncoder().encode(
 export async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
   
-  if (path.startsWith('/admin') && !path.startsWith('/admin/login') && !path.startsWith('/api/admin/login')) {
+  if (path.startsWith('/admin') && !path.startsWith('/admin/login') && !path.startsWith('/admin/register') && !path.startsWith('/api/admin/login') && !path.startsWith('/api/admin/register')) {
     const token = request.cookies.get('admin_session')?.value;
     
     if (!token) {

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Lock, Mail, Loader2, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -103,8 +104,11 @@ export default function AdminLogin() {
           </button>
         </form>
         
-        <div className="mt-8 text-center text-xs text-gray-500">
-          Demo Credentials: admin@example.com / admin123
+        <div className="mt-6 text-center text-sm text-gray-500">
+          Don&apos;t have an account?{" "}
+          <Link href="/admin/register" className="text-primary hover:underline font-medium">
+            Create one
+          </Link>
         </div>
       </motion.div>
     </div>
