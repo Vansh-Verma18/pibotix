@@ -9,7 +9,7 @@ export async function POST(request: Request) {
   try {
     await connectToDatabase();
 
-    const { name, email, password } = await request.json();
+    const { name, email, password, companyName, phoneNumber, industry } = await request.json();
 
     if (!name || !email || !password) {
       return NextResponse.json({ error: 'Name, email, and password are required' }, { status: 400 });
@@ -35,6 +35,9 @@ export async function POST(request: Request) {
       name,
       email,
       passwordHash,
+      companyName,
+      phoneNumber,
+      industry,
       role: defaultRole._id,
       status: 'pending', // Hardcode pending status
     });
