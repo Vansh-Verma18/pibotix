@@ -47,9 +47,7 @@ export default function AdminLayout({
       <aside className="w-full md:w-64 border-r border-white/10 bg-[#0d0d0d] p-6 flex flex-col shrink-0 md:h-screen md:sticky top-0 overflow-y-auto custom-scrollbar">
         {/* Logo */}
         <div className="flex items-center gap-2 mb-8 md:mb-10">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center shadow-lg shadow-primary/20">
-            <span className="text-white font-bold font-mono text-sm">P</span>
-          </div>
+          <img src="/logo.png" alt="PiBotix Logo" className="h-8 w-auto object-contain" />
           <div>
             <span className="font-bold text-base tracking-tight text-white">Pibotix CMS</span>
             <p className="text-xs text-gray-500 -mt-0.5">Admin Panel</p>

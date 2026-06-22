@@ -66,10 +66,8 @@ export default function AdminRegister() {
         className="w-full max-w-md bg-[#111]/80 backdrop-blur-xl border border-white/10 p-8 rounded-3xl shadow-2xl relative z-10"
       >
         {/* Header */}
-        <div className="flex items-center gap-3 mb-2 justify-center">
-          <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
-            <ShieldCheck className="w-5 h-5 text-white" />
-          </div>
+        <div className="flex flex-col items-center gap-3 mb-2 justify-center">
+          <img src="/logo.png" alt="PiBotix Logo" className="h-12 w-auto object-contain" />
           <span className="font-bold text-2xl tracking-tight text-white">Create Account</span>
         </div>
         <p className="text-center text-gray-500 text-sm mb-8">Register a new admin user</p>

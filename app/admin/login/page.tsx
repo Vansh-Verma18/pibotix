@@ -49,10 +49,8 @@ export default function AdminLogin() {
         animate={{ opacity: 1, y: 0 }}
         className="w-full max-w-md bg-card/80 backdrop-blur-xl border border-white/10 p-8 rounded-3xl shadow-2xl relative z-10"
       >
-        <div className="flex items-center gap-3 mb-8 justify-center">
-          <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
-            <Lock className="w-5 h-5 text-white" />
-          </div>
+        <div className="flex flex-col items-center gap-3 mb-8 justify-center">
+          <img src="/logo.png" alt="PiBotix Logo" className="h-12 w-auto object-contain" />
           <span className="font-bold text-2xl tracking-tight text-white">Pibotix Admin</span>
         </div>
 

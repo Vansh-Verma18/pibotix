@@ -18,10 +18,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" className="flex items-center gap-2 group mb-6">
-              <div className="w-8 h-8 bg-primary rounded flex items-center justify-center transform group-hover:rotate-12 transition-transform">
-                <span className="text-white font-bold text-xl leading-none font-mono">P</span>
-              </div>
-              <span className="font-bold text-xl tracking-tight text-white">Pibotix</span>
+              <img src="/logo.png" alt="PiBotix Logo" className="h-12 w-auto object-contain" />
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               Transforming manufacturing with intelligent robotics, automation, and industrial IoT solutions. Partner with us for next-generation operational efficiency.
