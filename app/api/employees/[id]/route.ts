@@ -64,7 +64,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
       return NextResponse.json({ 
         success: false, 
         error: 'Validation failed', 
-        details: validationResult.error.errors 
+        details: (validationResult.error as any).errors 
       }, { status: 400 });
     }
 

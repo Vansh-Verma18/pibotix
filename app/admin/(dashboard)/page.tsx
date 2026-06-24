@@ -31,6 +31,8 @@ const sourceData = [
 
 
 
+import EmployeeAttendanceWidget from "@/components/hrms/EmployeeAttendanceWidget";
+
 export default function AnalyticsDashboard() {
   const [mounted, setMounted] = useState(false);
   const [stats, setStats] = useState({ totalVisitors: 0, totalLeads: 0, conversionRate: 0, services: [] as any[] });
@@ -77,8 +79,8 @@ export default function AnalyticsDashboard() {
       
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-white mb-2">Analytics Dashboard</h1>
-          <p className="text-gray-400">Overview of your website traffic and lead conversions.</p>
+          <h1 className="text-3xl font-bold text-white mb-2">Dashboard Overview</h1>
+          <p className="text-gray-400">Overview of your activity and lead conversions.</p>
         </div>
         <button 
           onClick={handleExport}
@@ -87,6 +89,9 @@ export default function AnalyticsDashboard() {
           <Download className="w-4 h-4" /> Export Report
         </button>
       </div>
+
+      {/* Employee Personal Attendance Widget */}
+      <EmployeeAttendanceWidget />
 
       {/* Top Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

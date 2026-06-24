@@ -11,6 +11,7 @@ import {
 const MENU_ITEMS = [
   { href: '/admin', icon: LayoutDashboard, label: 'Analytics Dashboard', exact: true },
   { href: '/admin/employees', icon: Users, label: 'Employee Management', exact: false },
+  { href: '/admin/attendance', icon: CalendarCheck, label: 'Attendance Management', exact: false },
   { href: '/admin/assessments', icon: ClipboardCheck, label: 'Assessments', exact: false },
   { href: '/admin/leads', icon: Users, label: 'Lead Management', exact: false },
   { href: '/admin/contacts', icon: MessageSquare, label: 'Contact Requests', exact: false },
