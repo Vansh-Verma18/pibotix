@@ -88,7 +88,7 @@ export async function POST(req: NextRequest) {
     // 3. Create
     const newEmployee = await Employee.create({
       ...validationResult.data,
-      createdBy: user.userId
+      createdBy: user.userId as string
     });
 
     return NextResponse.json({ success: true, employee: newEmployee }, { status: 201 });

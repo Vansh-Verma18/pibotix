@@ -5,14 +5,15 @@ import { usePathname, useRouter } from 'next/navigation';
 import { 
   LayoutDashboard, Users, Database, Settings, 
   MessageSquare, CalendarCheck, Briefcase, 
-  Star, PenTool, LogOut, Globe, UserCheck, ClipboardCheck, Shield
+  Star, PenTool, LogOut, Globe, UserCheck, ClipboardCheck, Shield, Clock, CalendarDays, ClipboardList
 } from 'lucide-react';
 
 const MENU_ITEMS = [
   { href: '/admin', icon: LayoutDashboard, label: 'Analytics Dashboard', exact: true },
   { href: '/admin/employees', icon: Users, label: 'Employee Management', exact: false },
   { href: '/admin/attendance', icon: CalendarCheck, label: 'Attendance Management', exact: false },
-  { href: '/admin/assessments', icon: ClipboardCheck, label: 'Assessments', exact: false },
+  { href: '/admin/leaves', icon: Clock, label: 'Leave Management', exact: false },
+  { href: '/admin/assessments', icon: ClipboardList, label: 'Assessments', exact: false },
   { href: '/admin/leads', icon: Users, label: 'Lead Management', exact: false },
   { href: '/admin/contacts', icon: MessageSquare, label: 'Contact Requests', exact: false },
   { href: '/admin/consultations', icon: CalendarCheck, label: 'Consultations', exact: false },
