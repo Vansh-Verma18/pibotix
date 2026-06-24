@@ -8,7 +8,7 @@ export interface IRole extends Document {
 }
 
 const RoleSchema: Schema = new Schema({
-  name: { type: String, enum: ['superadmin', 'admin', 'user'], required: true, unique: true },
+  name: { type: String, enum: ['superadmin', 'admin', 'user', 'manager', 'employee'], required: true, unique: true },
   permissions: [{ type: Schema.Types.ObjectId, ref: 'Permission' }],
 }, { timestamps: true });
 

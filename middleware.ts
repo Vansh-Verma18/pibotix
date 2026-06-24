@@ -27,13 +27,20 @@ export async function middleware(request: NextRequest) {
         '/admin/team',
         '/admin/blog',
         '/admin/case-studies',
-        '/admin/testimonials'
+        '/admin/testimonials',
+        '/admin/assessments',
+        '/admin/consultations',
+        '/admin/contacts',
+        '/admin/leads',
+        '/admin/services'
       ];
 
-      // If a standard user tries to access a restricted admin route, redirect to their basic dashboard
-      if (role === 'user') {
+      // If a standard user, employee, or manager tries to access a restricted admin route, redirect them
+      if (['user', 'employee', 'manager'].includes(role)) {
         const isRestricted = restrictedAdminRoutes.some(r => path.startsWith(r));
         if (isRestricted) {
+          // You can create specific dashboards for managers/employees later.
+          // For now, redirect to /admin (which can conditionally render content based on role)
           return NextResponse.redirect(new URL('/admin', request.url));
         }
       }
