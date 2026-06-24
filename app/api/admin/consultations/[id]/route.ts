@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import connectToDatabase from '@/lib/mongodb';
 import { Consultation } from '@/lib/models/Consultation';
+import { sendStatusUpdateEmail } from '@/lib/mailer';
 
 export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
@@ -16,6 +17,17 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
 
     if (!updated) {
       return NextResponse.json({ error: 'Consultation not found' }, { status: 404 });
+    }
+
+    // Send email notification on status change
+    if (body.status && ['approved', 'rejected', 'rescheduled', 'scheduled'].includes(body.status)) {
+      sendStatusUpdateEmail(
+        updated.email,
+        updated.name,
+        body.status,
+        updated.preferredDate,
+        updated.timeSlot
+      ).catch(console.error);
     }
 
     return NextResponse.json({ success: true, consultation: updated }, { status: 200 });

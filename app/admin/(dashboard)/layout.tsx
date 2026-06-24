@@ -5,7 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { 
   LayoutDashboard, Users, Database, Settings, 
   MessageSquare, CalendarCheck, Briefcase, 
-  Star, PenTool, LogOut, Globe, UserCheck, ClipboardCheck
+  Star, PenTool, LogOut, Globe, UserCheck, ClipboardCheck, Shield
 } from 'lucide-react';
 
 const MENU_ITEMS = [
@@ -19,6 +19,7 @@ const MENU_ITEMS = [
   { href: '/admin/testimonials', icon: Star, label: 'Testimonials', exact: false },
   { href: '/admin/team', icon: UserCheck, label: 'Team Management', exact: false },
   { href: '/admin/blog', icon: PenTool, label: 'Blog Management', exact: false },
+  { href: '/admin/users', icon: Shield, label: 'User Management', exact: false },
   { href: '/admin/settings', icon: Settings, label: 'Settings', exact: false },
 ];
 

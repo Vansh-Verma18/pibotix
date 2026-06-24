@@ -5,11 +5,15 @@ export interface IConsultation extends Document {
   email: string;
   company: string;
   phone?: string;
+  service: string;
+  industry: string;
+  budget: string;
+  documentUrl?: string;
   preferredDate: string;
   timeSlot: string;
   topic: string;
   message: string;
-  status: 'pending' | 'scheduled' | 'completed' | 'cancelled';
+  status: 'pending' | 'approved' | 'scheduled' | 'completed' | 'cancelled' | 'rejected' | 'rescheduled';
   createdAt: Date;
   updatedAt: Date;
 }
@@ -17,13 +21,21 @@ export interface IConsultation extends Document {
 const ConsultationSchema: Schema = new Schema({
   name: { type: String, required: true },
   email: { type: String, required: true },
-  company: { type: String },
+  company: { type: String, required: true },
   phone: { type: String },
+  service: { type: String, required: true },
+  industry: { type: String, required: true },
+  budget: { type: String, required: true },
+  documentUrl: { type: String },
   preferredDate: { type: String, required: true },
   timeSlot: { type: String, required: true },
   topic: { type: String, required: true },
-  message: { type: String },
-  status: { type: String, enum: ['pending', 'scheduled', 'completed', 'cancelled'], default: 'pending' },
+  message: { type: String, required: true },
+  status: { 
+    type: String, 
+    enum: ['pending', 'approved', 'scheduled', 'completed', 'cancelled', 'rejected', 'rescheduled'], 
+    default: 'pending' 
+  },
 }, { timestamps: true });
 
 export const Consultation: Model<IConsultation> = mongoose.models.Consultation || mongoose.model<IConsultation>('Consultation', ConsultationSchema);

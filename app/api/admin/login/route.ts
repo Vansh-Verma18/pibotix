@@ -28,6 +28,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Account is temporarily locked. Try again later.' }, { status: 403 });
     }
 
+    // Support both new schema (passwordHash) and legacy accounts (password)
     const isValid = await bcrypt.compare(password, user.passwordHash);
     
     if (!isValid) {
