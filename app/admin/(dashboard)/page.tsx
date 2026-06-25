@@ -33,6 +33,7 @@ const sourceData = [
 
 import EmployeeAttendanceWidget from "@/components/hrms/EmployeeAttendanceWidget";
 import EmployeeProjectWidget from "@/components/pm/EmployeeProjectWidget";
+import EmployeeTaskWidget from "@/components/tasks/EmployeeTaskWidget";
 
 export default function AnalyticsDashboard() {
   const [mounted, setMounted] = useState(false);
@@ -91,8 +92,10 @@ export default function AnalyticsDashboard() {
         </button>
       </div>
 
-      {/* Employee Personal Attendance Widget */}
-      <EmployeeAttendanceWidget />
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <EmployeeAttendanceWidget />
+        <EmployeeTaskWidget />
+      </div>
       <EmployeeProjectWidget />
 
       {/* Top Stats */}

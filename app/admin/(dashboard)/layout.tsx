@@ -5,12 +5,13 @@ import { usePathname, useRouter } from 'next/navigation';
 import { 
   LayoutDashboard, Users, Database, Settings, 
   MessageSquare, CalendarCheck, Briefcase, 
-  Star, PenTool, LogOut, Globe, UserCheck, ClipboardCheck, Shield, Clock, CalendarDays, ClipboardList
+  Star, PenTool, LogOut, Globe, UserCheck, ClipboardCheck, Shield, Clock, CalendarDays, ClipboardList, CheckSquare
 } from 'lucide-react';
 
 const MENU_ITEMS = [
   { href: '/admin', icon: LayoutDashboard, label: 'Analytics Dashboard', exact: true },
   { href: '/admin/projects', icon: Briefcase, label: 'Project Management', exact: false },
+  { href: '/admin/tasks', icon: CheckSquare, label: 'Task Management', exact: false },
   { href: '/admin/employees', icon: Users, label: 'Employee Management', exact: false },
   { href: '/admin/attendance', icon: CalendarCheck, label: 'Attendance Management', exact: false },
   { href: '/admin/leaves', icon: Clock, label: 'Leave Management', exact: false },
