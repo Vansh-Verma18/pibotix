@@ -32,6 +32,7 @@ const sourceData = [
 
 
 import EmployeeAttendanceWidget from "@/components/hrms/EmployeeAttendanceWidget";
+import EmployeeProjectWidget from "@/components/pm/EmployeeProjectWidget";
 
 export default function AnalyticsDashboard() {
   const [mounted, setMounted] = useState(false);
@@ -92,6 +93,7 @@ export default function AnalyticsDashboard() {
 
       {/* Employee Personal Attendance Widget */}
       <EmployeeAttendanceWidget />
+      <EmployeeProjectWidget />
 
       {/* Top Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

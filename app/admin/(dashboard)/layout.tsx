@@ -10,6 +10,7 @@ import {
 
 const MENU_ITEMS = [
   { href: '/admin', icon: LayoutDashboard, label: 'Analytics Dashboard', exact: true },
+  { href: '/admin/projects', icon: Briefcase, label: 'Project Management', exact: false },
   { href: '/admin/employees', icon: Users, label: 'Employee Management', exact: false },
   { href: '/admin/attendance', icon: CalendarCheck, label: 'Attendance Management', exact: false },
   { href: '/admin/leaves', icon: Clock, label: 'Leave Management', exact: false },
