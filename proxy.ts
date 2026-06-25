@@ -6,7 +6,7 @@ const SECRET_KEY = new TextEncoder().encode(
   process.env.JWT_SECRET || 'super_secret_fallback_key_for_development_only'
 );
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const path = request.nextUrl.pathname;
   
   if (path.startsWith('/admin') && !path.startsWith('/admin/login') && !path.startsWith('/admin/register') && !path.startsWith('/api/admin/login') && !path.startsWith('/api/admin/register')) {

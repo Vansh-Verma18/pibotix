@@ -76,6 +76,7 @@ export default function CaseStudyDetailPage({ params }: { params: { slug: string
               src={caseStudy.image} 
               alt={caseStudy.title}
               fill
+              sizes="(max-width:1024px) 100vw, 50vw"
               className="object-cover"
               priority
             />

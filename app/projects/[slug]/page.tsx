@@ -99,6 +99,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
                   src={project.images[0]} 
                   alt={project.title}
                   fill
+                  sizes="100vw"
                   className="object-cover"
                   priority
                 />
@@ -107,7 +108,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                   {project.images.slice(1).map((img, idx) => (
                     <div key={idx} className="relative h-48 rounded-2xl overflow-hidden border border-white/10">
-                      <Image src={img} alt={`Gallery ${idx + 1}`} fill className="object-cover hover:scale-105 transition-transform duration-500" />
+                      <Image src={img} alt={`Gallery ${idx + 1}`} fill sizes="(max-width:768px) 50vw, 33vw" className="object-cover hover:scale-105 transition-transform duration-500" />
                     </div>
                   ))}
                 </div>
@@ -180,7 +181,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
               {relatedProjects.map((rp) => (
                 <Link key={rp.id} href={`/projects/${rp.slug}`} className="group block bg-card border border-white/10 rounded-2xl overflow-hidden hover:border-primary/50 transition-colors">
                   <div className="relative h-48 w-full">
-                    <Image src={rp.images[0]} alt={rp.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <Image src={rp.images[0]} alt={rp.title} fill sizes="(max-width:768px) 100vw, (max-width:1024px) 50vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
                   </div>
                   <div className="p-6">
                     <span className="text-primary text-xs font-semibold uppercase tracking-wider mb-2 block">{rp.category}</span>

@@ -110,6 +110,7 @@ export default function ProjectsPortfolioPage() {
                       src={project.images[0]} 
                       alt={project.title}
                       fill
+                      sizes="(max-width:768px) 100vw, (max-width:1024px) 50vw, 33vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
@@ -182,6 +183,7 @@ export default function ProjectsPortfolioPage() {
                   src={quickViewProject.images[0]} 
                   alt={quickViewProject.title}
                   fill
+                  sizes="(max-width:768px) 100vw, 50vw"
                   className="object-cover"
                 />
               </div>

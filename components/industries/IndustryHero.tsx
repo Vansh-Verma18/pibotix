@@ -14,6 +14,7 @@ export default function IndustryHero() {
           src="/Service4.webp"
           alt="Industrial Automation Across Sectors"
           fill
+          sizes="100vw"
           className="object-cover opacity-30"
           priority
         />
