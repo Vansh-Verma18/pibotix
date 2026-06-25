@@ -12,6 +12,7 @@ export default function TasksDashboard() {
   const [departmentFilter, setDepartmentFilter] = useState("all");
   const [priorityFilter, setPriorityFilter] = useState("all");
   const [showFilters, setShowFilters] = useState(false);
+  const [view, setView] = useState<'list' | 'kanban'>('kanban');
 
   const fetchTasks = async () => {
     setLoading(true);

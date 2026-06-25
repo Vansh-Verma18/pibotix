@@ -46,7 +46,7 @@ export async function POST(req: NextRequest, context: { params: Promise<{ id: st
     await TaskActivity.create({
       taskId: task._id,
       actorId: new mongoose.Types.ObjectId(decoded.userId as string),
-      action: 'Commented',
+      action: 'Comment Added',
       details: `Added a comment: "${text.substring(0, 50)}${text.length > 50 ? '...' : ''}"`
     });
 

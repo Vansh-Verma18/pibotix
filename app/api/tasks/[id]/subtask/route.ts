@@ -45,7 +45,7 @@ export async function POST(req: NextRequest, context: { params: Promise<{ id: st
     await TaskActivity.create({
       taskId: task._id,
       actorId: new mongoose.Types.ObjectId(decoded.userId as string),
-      action: 'Updated',
+      action: 'Subtask Updated',
       details: `Added subtask: "${title}"`
     });
 
@@ -69,7 +69,7 @@ export async function PUT(req: NextRequest, context: { params: Promise<{ id: str
     const task = await Task.findById(params.id);
     if (!task) return NextResponse.json({ error: 'Task not found' }, { status: 404 });
 
-    const subtask = task.subtasks.id(subtaskId);
+    const subtask = (task.subtasks as any).id(subtaskId);
     if (!subtask) return NextResponse.json({ error: 'Subtask not found' }, { status: 404 });
 
     subtask.isCompleted = isCompleted;
@@ -85,7 +85,7 @@ export async function PUT(req: NextRequest, context: { params: Promise<{ id: str
     await TaskActivity.create({
       taskId: task._id,
       actorId: new mongoose.Types.ObjectId(decoded.userId as string),
-      action: 'Updated',
+      action: 'Subtask Updated',
       details: `Marked subtask "${subtask.title}" as ${isCompleted ? 'completed' : 'incomplete'}`
     });
 
