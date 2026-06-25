@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { 
   ArrowLeft, Activity, Users, FileText, Calendar, 
-  DollarSign, CheckCircle, Loader2, Link as LinkIcon 
+  DollarSign, CheckCircle, Loader2, Link as LinkIcon, Plus 
 } from "lucide-react";
 import Link from "next/link";
+import AssignMemberModal from "@/components/pm/AssignMemberModal";
 
 export default function ProjectDetailsPage() {
   const params = useParams();
@@ -14,6 +15,7 @@ export default function ProjectDetailsPage() {
   const [project, setProject] = useState<any>(null);
   const [activities, setActivities] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isAssignModalOpen, setIsAssignModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchProject = async () => {
@@ -85,9 +87,14 @@ export default function ProjectDetailsPage() {
           </div>
 
           <div className="bg-card border border-white/10 p-6 rounded-2xl">
-            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <Users className="w-5 h-5 text-primary" /> Team Members
-            </h2>
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                <Users className="w-5 h-5 text-primary" /> Team Members
+              </h2>
+              <button onClick={() => setIsAssignModalOpen(true)} className="flex items-center gap-1.5 text-xs font-medium text-white bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition-colors">
+                <Plus className="w-3.5 h-3.5" /> Assign Member
+              </button>
+            </div>
             <div className="space-y-4">
               {/* Manager */}
               <div className="flex items-center justify-between p-3 bg-white/[0.02] border border-white/5 rounded-xl">
@@ -166,6 +173,17 @@ export default function ProjectDetailsPage() {
           </div>
         </div>
       </div>
+
+      <AssignMemberModal 
+        isOpen={isAssignModalOpen}
+        onClose={() => setIsAssignModalOpen(false)}
+        onSuccess={() => {
+          setIsAssignModalOpen(false);
+          // Refresh data by manually re-fetching (simulating effect trigger)
+          window.location.reload(); 
+        }}
+        projectId={params.id as string}
+      />
     </div>
   );
 }
