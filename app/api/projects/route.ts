@@ -34,7 +34,7 @@ export async function GET(req: NextRequest) {
     const status = url.searchParams.get('status');
     const priority = url.searchParams.get('priority');
 
-    let query: any = {};
+    const query: any = {};
     if (status && status !== 'all') query.status = status;
     if (priority && priority !== 'all') query.priority = priority;
 

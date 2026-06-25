@@ -150,7 +150,7 @@ export default function AnalyticsDashboard() {
             <BarChart3 className="w-5 h-5 text-primary" /> Traffic vs Leads (Last 7 Days)
           </h3>
           <div className="h-80 w-full min-h-[300px]">
-            <ResponsiveContainer width="100%" height="100%" minWidth={1} minHeight={1}>
+            <ResponsiveContainer width="100%" height={300}>
               <LineChart data={trafficData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
                 <XAxis dataKey="name" stroke="#888" />
@@ -170,7 +170,7 @@ export default function AnalyticsDashboard() {
         <div className="bg-card border border-white/10 p-6 rounded-2xl">
           <h3 className="text-lg font-bold text-white mb-6">Traffic Sources</h3>
           <div className="h-64 w-full min-h-[250px]">
-            <ResponsiveContainer width="100%" height="100%" minWidth={1} minHeight={1}>
+            <ResponsiveContainer width="100%" height={250}>
               <PieChart>
                 <Pie
                   data={sourceData}

@@ -31,7 +31,7 @@ export async function GET(req: NextRequest) {
     const statusFilter = url.searchParams.get('status');
     const typeFilter = url.searchParams.get('type');
     
-    let query: any = {};
+    const query: any = {};
 
     if (statusFilter && statusFilter !== 'all') {
       query.status = statusFilter;

@@ -33,7 +33,7 @@ export async function GET(req: NextRequest) {
     const date = searchParams.get('date') || '';
     const status = searchParams.get('status') || '';
 
-    let query: any = {};
+    const query: any = {};
     if (employeeId) query.employeeId = employeeId;
     if (date) {
       // Expecting YYYY-MM-DD

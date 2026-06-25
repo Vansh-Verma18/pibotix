@@ -16,7 +16,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Missing email or password' }, { status: 400 });
     }
 
-    let user = await User.findOne({ email }).populate('role');
+    const user = await User.findOne({ email }).populate('role');
 
     if (!user) {
       // Security feature: Avoid leaking whether user exists or not by returning generic error

@@ -35,7 +35,7 @@ export async function GET(req: NextRequest) {
     const status = searchParams.get('status') || '';
 
     // 2. Build Query
-    let query: any = {};
+    const query: any = {};
     if (search) {
       query.$or = [
         { firstName: { $regex: search, $options: 'i' } },

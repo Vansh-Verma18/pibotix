@@ -37,7 +37,7 @@ export async function GET(req: NextRequest) {
     const url = new URL(req.url);
     const projectId = url.searchParams.get('projectId');
     
-    let query: any = {};
+    const query: any = {};
     if (projectId) query.projectId = projectId;
     
     if (decoded.role === 'employee') {

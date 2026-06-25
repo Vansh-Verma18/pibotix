@@ -35,7 +35,7 @@ export async function PUT(req: NextRequest, context: { params: Promise<{ id: str
       return NextResponse.json({ error: 'Status or completion percentage required' }, { status: 400 });
     }
 
-    let updateData: any = {};
+    const updateData: any = {};
     if (status) updateData.status = status;
     if (completionPercentage !== undefined) updateData.completionPercentage = completionPercentage;
     
