@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { 
   LayoutDashboard, Users, Database, Settings, 
-  MessageSquare, CalendarCheck, Briefcase, 
+  MessageSquare, CalendarCheck, Briefcase, Box, Banknote,
   Star, PenTool, LogOut, Globe, UserCheck, ClipboardCheck, Shield, Clock, CalendarDays, ClipboardList, CheckSquare
 } from 'lucide-react';
 
@@ -12,6 +12,8 @@ const MENU_ITEMS = [
   { href: '/admin', icon: LayoutDashboard, label: 'Analytics Dashboard', exact: true },
   { href: '/admin/projects', icon: Briefcase, label: 'Project Management', exact: false },
   { href: '/admin/tasks', icon: CheckSquare, label: 'Task Management', exact: false },
+  { href: '/admin/assets', icon: Box, label: 'Asset & Inventory', exact: false },
+  { href: '/admin/payroll', icon: Banknote, label: 'Payroll & Salary', exact: false },
   { href: '/admin/timesheets', icon: Clock, label: 'My Timesheets', exact: true },
   { href: '/admin/timesheets/manager', icon: CheckSquare, label: 'Team Timesheets', exact: true },
   { href: '/admin/employees', icon: Users, label: 'Employee Management', exact: false },

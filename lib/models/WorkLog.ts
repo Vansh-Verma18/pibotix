@@ -80,9 +80,9 @@ const workLogSchema = new Schema<IWorkLog>(
   { timestamps: true }
 );
 
-workLogSchema.pre("validate", async function (next) {
+workLogSchema.pre("validate", async function () {
   if (this.isNew && !this.logId) {
-    const Model = mongoose.models.WorkLog || mongoose.model("WorkLog", workLogSchema);
+    const Model = (mongoose.models.WorkLog as Model<IWorkLog>) || mongoose.model<IWorkLog>("WorkLog", workLogSchema);
     const lastLog = await Model.findOne({}, {}, { sort: { createdAt: -1 } });
     if (lastLog && lastLog.logId) {
       const lastIdNum = parseInt(lastLog.logId.replace("WL-", ""), 10);
@@ -91,8 +91,6 @@ workLogSchema.pre("validate", async function (next) {
       this.logId = "WL-0001";
     }
   }
-  next();
 });
 
-export const WorkLog: Model<IWorkLog> =
-  mongoose.models.WorkLog || mongoose.model<IWorkLog>("WorkLog", workLogSchema);
+export const WorkLog: Model<IWorkLog> = (mongoose.models.WorkLog as Model<IWorkLog>) || mongoose.model<IWorkLog>("WorkLog", workLogSchema);

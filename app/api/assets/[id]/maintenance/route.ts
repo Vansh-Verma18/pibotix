@@ -1,0 +1,69 @@
+import { NextRequest, NextResponse } from "next/server";
+import connectToDatabase from "@/lib/mongodb";
+import { Asset } from "@/lib/models/Asset";
+import { AssetActivity } from "@/lib/models/AssetActivity";
+import { MaintenanceRecord } from "@/lib/models/MaintenanceRecord";
+import { jwtVerify } from 'jose';
+import mongoose from "mongoose";
+
+const SECRET_KEY = new TextEncoder().encode(
+  process.env.JWT_SECRET || 'super_secret_fallback_key_for_development_only'
+);
+
+async function verifyAuth(req: NextRequest) {
+  const token = req.cookies.get('admin_session')?.value;
+  if (!token) return null;
+  try {
+    const { payload } = await jwtVerify(token, SECRET_KEY);
+    return payload; 
+  } catch {
+    return null;
+  }
+}
+
+export async function POST(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  try {
+    await connectToDatabase();
+    
+    const { id } = await params;
+    const decoded = await verifyAuth(req);
+    if (!decoded || decoded.role === 'employee') return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+
+    const body = await req.json();
+    const { maintenanceType, serviceDate, technician, cost, notes, nextMaintenanceDate } = body;
+
+    const asset = await Asset.findById(id);
+    if (!asset) return NextResponse.json({ error: 'Not found' }, { status: 404 });
+
+    // Create record
+    const record = new MaintenanceRecord({
+      assetId: asset._id,
+      maintenanceType,
+      serviceDate,
+      technician,
+      cost,
+      notes,
+      nextMaintenanceDate,
+      status: 'In Progress'
+    });
+    await record.save();
+
+    asset.status = 'In Maintenance';
+    asset.assignedEmployee = undefined; // usually taken back from employee
+    asset.assignedProject = undefined;
+    await asset.save();
+
+    await AssetActivity.create({
+      assetId: asset._id,
+      actorId: new mongoose.Types.ObjectId(decoded.userId as string),
+      action: 'Maintenance Started',
+      details: notes || `${maintenanceType} maintenance started by ${technician || 'Technician'}`,
+      cost
+    });
+
+    return NextResponse.json({ success: true, maintenanceRecord: record, asset });
+  } catch (error: any) {
+    console.error("POST Maintenance Asset Error:", error);
+    return NextResponse.json({ error: error.message || 'Server error' }, { status: 500 });
+  }
+}

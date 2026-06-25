@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     }
 
     // Support both new schema (passwordHash) and legacy accounts (password)
-    const isValid = await bcrypt.compare(password, user.passwordHash);
+    const isValid = await bcrypt.compare(password, user.passwordHash || (user as any).password || "");
     
     if (!isValid) {
       // Track failed attempts

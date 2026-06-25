@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { 
   ArrowLeft, Activity, Users, FileText, Calendar, 
-  DollarSign, CheckCircle, Loader2, Link as LinkIcon, Plus 
+  DollarSign, CheckCircle, Loader2, Link as LinkIcon, Plus, Box, Database 
 } from "lucide-react";
 import Link from "next/link";
 import AssignMemberModal from "@/components/pm/AssignMemberModal";
@@ -14,6 +14,7 @@ export default function ProjectDetailsPage() {
   const router = useRouter();
   const [project, setProject] = useState<any>(null);
   const [activities, setActivities] = useState<any[]>([]);
+  const [assets, setAssets] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [isAssignModalOpen, setIsAssignModalOpen] = useState(false);
 
@@ -25,6 +26,12 @@ export default function ProjectDetailsPage() {
         if (data.success) {
           setProject(data.project);
           setActivities(data.activities);
+        }
+
+        const assetRes = await fetch(`/api/assets?assignedProject=${params.id}`);
+        if (assetRes.ok) {
+           const assetData = await assetRes.json();
+           setAssets(assetData.assets || []);
         }
       } catch (err) {
         console.error(err);
@@ -124,6 +131,32 @@ export default function ProjectDetailsPage() {
                 </div>
               ))}
             </div>
+          </div>
+
+          <div className="bg-card border border-white/10 p-6 rounded-2xl mt-6">
+            <h2 className="text-xl font-bold text-white flex items-center gap-2 mb-4">
+              <Database className="w-5 h-5 text-blue-400" /> Equipment & Assets
+            </h2>
+            {assets.length === 0 ? (
+               <p className="text-sm text-gray-500">No equipment currently assigned to this project.</p>
+            ) : (
+               <div className="space-y-4">
+                 {assets.map(asset => (
+                   <div key={asset._id} className="flex justify-between items-center p-4 bg-white/5 border border-white/10 rounded-xl">
+                     <div className="flex items-center gap-3">
+                       <Box className="w-5 h-5 text-gray-400" />
+                       <div>
+                         <p className="text-white font-medium">{asset.name}</p>
+                         <p className="text-xs text-gray-400">{asset.assetId} • {asset.status}</p>
+                       </div>
+                     </div>
+                     <Link href={`/admin/assets/${asset._id}`} className="text-xs px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-colors">
+                       View
+                     </Link>
+                   </div>
+                 ))}
+               </div>
+            )}
           </div>
         </div>
 

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { 
   ArrowLeft, Mail, Phone, MapPin, Building, Calendar, 
-  DollarSign, ShieldAlert, HeartPulse, UserCircle2, Briefcase, FileText
+  DollarSign, ShieldAlert, HeartPulse, UserCircle2, Briefcase, FileText, Database, Box
 } from "lucide-react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
@@ -37,6 +37,7 @@ export default function EmployeeProfilePage() {
   const params = useParams();
   const router = useRouter();
   const [employee, setEmployee] = useState<Employee | null>(null);
+  const [assets, setAssets] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -49,6 +50,13 @@ export default function EmployeeProfilePage() {
         }
         const data = await res.json();
         setEmployee(data.employee);
+        
+        // Fetch assigned assets
+        const assetRes = await fetch(`/api/assets?assignedEmployee=${params.id}`);
+        if (assetRes.ok) {
+           const assetData = await assetRes.json();
+           setAssets(assetData.assets || []);
+        }
       } catch (error) {
         console.error(error);
         router.push('/admin/employees');
@@ -203,17 +211,44 @@ export default function EmployeeProfilePage() {
             )}
           </div>
 
+          {/* Assigned Assets */}
+          <div className="bg-card border border-white/10 p-6 rounded-2xl mt-6">
+            <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-6 border-b border-white/10 pb-2 flex items-center gap-2">
+              <Database className="w-4 h-4" /> Assigned Hardware & Assets
+            </h3>
+            {assets.length === 0 ? (
+               <p className="text-sm text-gray-500">No active assets assigned to this employee.</p>
+            ) : (
+               <div className="space-y-4">
+                 {assets.map(asset => (
+                   <div key={asset._id} className="flex justify-between items-center p-4 bg-white/5 border border-white/10 rounded-xl">
+                     <div className="flex items-center gap-3">
+                       <Box className="w-5 h-5 text-blue-400" />
+                       <div>
+                         <p className="text-white font-medium">{asset.name}</p>
+                         <p className="text-xs text-gray-400">{asset.assetId} • {asset.category}</p>
+                       </div>
+                     </div>
+                     <Link href={`/admin/assets/${asset._id}`} className="text-xs px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-colors">
+                       View
+                     </Link>
+                   </div>
+                 ))}
+               </div>
+            )}
+          </div>
+          
           {/* Placeholders for Future Modules */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
             <div className="bg-white/5 border border-white/10 border-dashed p-6 rounded-2xl flex flex-col items-center justify-center text-center h-48 opacity-70">
               <Briefcase className="w-8 h-8 text-gray-500 mb-3" />
               <h3 className="text-white font-semibold">Assigned Projects</h3>
-              <p className="text-xs text-gray-400 mt-1">Module coming soon</p>
+              <p className="text-xs text-gray-400 mt-1">Check Project Module</p>
             </div>
             <div className="bg-white/5 border border-white/10 border-dashed p-6 rounded-2xl flex flex-col items-center justify-center text-center h-48 opacity-70">
               <Calendar className="w-8 h-8 text-gray-500 mb-3" />
               <h3 className="text-white font-semibold">Attendance & Leave</h3>
-              <p className="text-xs text-gray-400 mt-1">Module coming soon</p>
+              <p className="text-xs text-gray-400 mt-1">Check Timesheets Module</p>
             </div>
           </div>
 
