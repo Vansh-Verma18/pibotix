@@ -3,11 +3,13 @@
 import { useEffect, useState } from "react";
 import { Loader2, Plus, LayoutGrid, KanbanSquare, Calendar, Filter, Target, Clock, CheckCircle } from "lucide-react";
 import KanbanBoard from "@/components/pm/KanbanBoard";
+import NewProjectModal from "@/components/pm/NewProjectModal";
 
 export default function ProjectsDashboard() {
   const [projects, setProjects] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [view, setView] = useState<'list' | 'kanban'>('kanban');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const fetchProjects = async () => {
     setLoading(true);
@@ -65,7 +67,7 @@ export default function ProjectsDashboard() {
           <button className="p-2 bg-white/5 hover:bg-white/10 text-white rounded-lg transition-colors">
             <Filter className="w-5 h-5" />
           </button>
-          <button className="flex items-center gap-2 bg-primary hover:bg-red-700 text-white px-5 py-2 rounded-lg font-medium transition-colors">
+          <button onClick={() => setIsModalOpen(true)} className="flex items-center gap-2 bg-primary hover:bg-red-700 text-white px-5 py-2 rounded-lg font-medium transition-colors">
             <Plus className="w-5 h-5" /> New Project
           </button>
         </div>
@@ -131,6 +133,15 @@ export default function ProjectsDashboard() {
           </div>
         </div>
       )}
+
+      <NewProjectModal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSuccess={() => {
+          setIsModalOpen(false);
+          fetchProjects(); // refresh projects
+        }}
+      />
     </div>
   );
 }
