@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { 
-  Users, Activity, TrendingUp, MousePointerClick, 
+import {
+  Users, Activity, TrendingUp, MousePointerClick,
   ArrowUpRight, Download, BarChart3, Clock, FileText, Settings
 } from "lucide-react";
-import { 
+import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   PieChart, Pie, Cell
 } from 'recharts';
@@ -78,13 +78,13 @@ export default function AnalyticsDashboard() {
 
   return (
     <div className="space-y-8">
-      
+
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-3xl font-bold text-white mb-2">Dashboard Overview</h1>
           <p className="text-gray-400">Overview of your activity and lead conversions.</p>
         </div>
-        <button 
+        <button
           onClick={handleExport}
           className="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 hover:bg-white/10 text-white rounded-lg transition-colors"
         >
@@ -144,19 +144,19 @@ export default function AnalyticsDashboard() {
 
       {/* Charts Row 1 */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        
+
         <div className="bg-card border border-white/10 p-6 rounded-2xl lg:col-span-2">
           <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
             <BarChart3 className="w-5 h-5 text-primary" /> Traffic vs Leads (Last 7 Days)
           </h3>
-          <div className="h-80 w-full min-h-[300px]">
-            <ResponsiveContainer width="100%" height={300}>
+          <div className="h-80">
+            <ResponsiveContainer width="100%" height="100%">
               <LineChart data={trafficData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
                 <XAxis dataKey="name" stroke="#888" />
                 <YAxis yAxisId="left" stroke="#888" />
                 <YAxis yAxisId="right" orientation="right" stroke="#888" />
-                <Tooltip 
+                <Tooltip
                   contentStyle={{ backgroundColor: '#111', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '10px' }}
                   itemStyle={{ color: '#fff' }}
                 />
@@ -169,8 +169,8 @@ export default function AnalyticsDashboard() {
 
         <div className="bg-card border border-white/10 p-6 rounded-2xl">
           <h3 className="text-lg font-bold text-white mb-6">Traffic Sources</h3>
-          <div className="h-64 w-full min-h-[250px]">
-            <ResponsiveContainer width="100%" height={250}>
+          <div className="h-64">
+            <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
                   data={sourceData}
@@ -185,7 +185,7 @@ export default function AnalyticsDashboard() {
                     <Cell key={`cell-${index}`} fill={entry.color} />
                   ))}
                 </Pie>
-                <Tooltip 
+                <Tooltip
                   contentStyle={{ backgroundColor: '#111', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '10px' }}
                 />
               </PieChart>
@@ -205,7 +205,7 @@ export default function AnalyticsDashboard() {
 
       {/* Bottom Row */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        
+
         <div className="bg-card border border-white/10 p-6 rounded-2xl">
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-lg font-bold text-white">Most Viewed Services</h3>
@@ -230,18 +230,18 @@ export default function AnalyticsDashboard() {
         <div className="bg-card border border-white/10 p-6 rounded-2xl">
           <h3 className="text-lg font-bold text-white mb-6">Quick Actions</h3>
           <div className="grid grid-cols-2 gap-4">
-             <Link href="/admin/leads" className="p-4 bg-primary/10 border border-primary/20 rounded-xl text-primary font-medium hover:bg-primary/20 transition-colors flex flex-col items-center text-center gap-2">
-               <Users className="w-6 h-6" /> View New Leads
-             </Link>
-             <Link href="/admin/blog" className="p-4 bg-primary/10 border border-primary/20 rounded-xl text-red-400 font-medium hover:bg-primary/15 transition-colors flex flex-col items-center text-center gap-2">
-               <FileText className="w-6 h-6" /> Manage Blog
-             </Link>
-             <Link href="/admin/testimonials" className="p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-green-400 font-medium hover:bg-green-500/20 transition-colors flex flex-col items-center text-center gap-2">
-               <BarChart3 className="w-6 h-6" /> Testimonials
-             </Link>
-             <Link href="/admin/settings" className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-xl text-purple-400 font-medium hover:bg-purple-500/20 transition-colors flex flex-col items-center text-center gap-2">
-               <Settings className="w-6 h-6" /> System Settings
-             </Link>
+            <Link href="/admin/leads" className="p-4 bg-primary/10 border border-primary/20 rounded-xl text-primary font-medium hover:bg-primary/20 transition-colors flex flex-col items-center text-center gap-2">
+              <Users className="w-6 h-6" /> View New Leads
+            </Link>
+            <Link href="/admin/blog" className="p-4 bg-primary/10 border border-primary/20 rounded-xl text-red-400 font-medium hover:bg-primary/15 transition-colors flex flex-col items-center text-center gap-2">
+              <FileText className="w-6 h-6" /> Manage Blog
+            </Link>
+            <Link href="/admin/testimonials" className="p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-green-400 font-medium hover:bg-green-500/20 transition-colors flex flex-col items-center text-center gap-2">
+              <BarChart3 className="w-6 h-6" /> Testimonials
+            </Link>
+            <Link href="/admin/settings" className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-xl text-purple-400 font-medium hover:bg-purple-500/20 transition-colors flex flex-col items-center text-center gap-2">
+              <Settings className="w-6 h-6" /> System Settings
+            </Link>
           </div>
         </div>
 

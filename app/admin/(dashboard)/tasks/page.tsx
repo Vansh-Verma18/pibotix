@@ -3,16 +3,25 @@
 import { useEffect, useState } from "react";
 import { Loader2, Plus, LayoutGrid, KanbanSquare, Calendar, Filter, Target, Clock, CheckCircle } from "lucide-react";
 import TaskKanbanBoard from "@/components/tasks/TaskKanbanBoard";
+import Link from "next/link";
 
 export default function TasksDashboard() {
   const [tasks, setTasks] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [view, setView] = useState<'list' | 'kanban'>('kanban');
+  const [search, setSearch] = useState("");
+  const [departmentFilter, setDepartmentFilter] = useState("all");
+  const [priorityFilter, setPriorityFilter] = useState("all");
+  const [showFilters, setShowFilters] = useState(false);
 
   const fetchTasks = async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/tasks');
+      const query = new URLSearchParams({
+        search,
+        department: departmentFilter,
+        priority: priorityFilter
+      }).toString();
+      const res = await fetch(`/api/tasks?${query}`);
       const data = await res.json();
       if (data.success) {
         setTasks(data.tasks);
@@ -25,8 +34,11 @@ export default function TasksDashboard() {
   };
 
   useEffect(() => {
-    fetchTasks();
-  }, []);
+    const delayDebounceFn = setTimeout(() => {
+      fetchTasks();
+    }, 300);
+    return () => clearTimeout(delayDebounceFn);
+  }, [search, departmentFilter, priorityFilter]);
 
   const handleStatusUpdate = async (taskId: string, newStatus: string) => {
     // Optimistic Update
@@ -62,7 +74,13 @@ export default function TasksDashboard() {
           <p className="text-gray-400">Enterprise granular task tracking & time management.</p>
         </div>
         <div className="flex gap-3">
-          <button className="p-2 bg-white/5 hover:bg-white/10 text-white rounded-lg transition-colors">
+          <Link href="/admin/tasks/analytics" className="flex items-center gap-2 p-2 bg-white/5 hover:bg-white/10 text-white rounded-lg transition-colors">
+            <Target className="w-5 h-5" /> <span className="hidden sm:inline">Analytics</span>
+          </Link>
+          <button 
+            onClick={() => setShowFilters(!showFilters)}
+            className={`p-2 rounded-lg transition-colors ${showFilters ? 'bg-primary text-white' : 'bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white'}`}
+          >
             <Filter className="w-5 h-5" />
           </button>
           <button className="flex items-center gap-2 bg-primary hover:bg-red-700 text-white px-5 py-2 rounded-lg font-medium transition-colors">
@@ -70,6 +88,50 @@ export default function TasksDashboard() {
           </button>
         </div>
       </div>
+
+      {/* Filters Section */}
+      {showFilters && (
+        <div className="bg-card border border-white/10 p-5 rounded-2xl grid grid-cols-1 md:grid-cols-3 gap-4 animate-in fade-in slide-in-from-top-4">
+          <div>
+            <label className="text-sm text-gray-400 mb-2 block">Search Tasks</label>
+            <input 
+              type="text" 
+              placeholder="Search by name or ID..." 
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary"
+            />
+          </div>
+          <div>
+            <label className="text-sm text-gray-400 mb-2 block">Department</label>
+            <select 
+              value={departmentFilter}
+              onChange={(e) => setDepartmentFilter(e.target.value)}
+              className="w-full bg-[#111] border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary"
+            >
+              <option value="all">All Departments</option>
+              <option value="Engineering">Engineering</option>
+              <option value="Design">Design</option>
+              <option value="Marketing">Marketing</option>
+              <option value="HR">HR</option>
+            </select>
+          </div>
+          <div>
+            <label className="text-sm text-gray-400 mb-2 block">Priority</label>
+            <select 
+              value={priorityFilter}
+              onChange={(e) => setPriorityFilter(e.target.value)}
+              className="w-full bg-[#111] border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary"
+            >
+              <option value="all">All Priorities</option>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+              <option value="Critical">Critical</option>
+            </select>
+          </div>
+        </div>
+      )}
 
       {/* KPIs */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

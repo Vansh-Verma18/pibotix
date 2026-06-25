@@ -14,6 +14,9 @@ export default function TaskDetailsPage() {
   const [loading, setLoading] = useState(true);
   const [timerRunning, setTimerRunning] = useState(false);
   const [timerActionLoading, setTimerActionLoading] = useState(false);
+  const [newSubtask, setNewSubtask] = useState("");
+  const [newComment, setNewComment] = useState("");
+  const [actionLoading, setActionLoading] = useState(false);
 
   const fetchTask = async () => {
     try {
@@ -59,6 +62,63 @@ export default function TaskDetailsPage() {
     }
   };
 
+  const handleAddSubtask = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newSubtask.trim()) return;
+    setActionLoading(true);
+    try {
+      const res = await fetch(`/api/tasks/${params.id}/subtask`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: newSubtask })
+      });
+      if (res.ok) {
+        setNewSubtask("");
+        fetchTask();
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setActionLoading(false);
+    }
+  };
+
+  const handleToggleSubtask = async (subtaskId: string, currentStatus: boolean) => {
+    try {
+      const res = await fetch(`/api/tasks/${params.id}/subtask`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ subtaskId, isCompleted: !currentStatus })
+      });
+      if (res.ok) {
+        fetchTask();
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleAddComment = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newComment.trim()) return;
+    setActionLoading(true);
+    try {
+      const res = await fetch(`/api/tasks/${params.id}/comment`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: newComment })
+      });
+      if (res.ok) {
+        setNewComment("");
+        fetchTask();
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setActionLoading(false);
+    }
+  };
+
   if (loading) return <div className="p-20 flex justify-center"><Loader2 className="w-8 h-8 animate-spin text-primary" /></div>;
   if (!task) return <div className="p-20 text-center text-white">Task not found</div>;
 
@@ -92,19 +152,32 @@ export default function TaskDetailsPage() {
             <p className="text-gray-400 leading-relaxed whitespace-pre-wrap">{task.description}</p>
           </div>
 
-          {/* Subtasks Placeholder */}
+          {/* Subtasks */}
           <div className="bg-card border border-white/10 p-6 rounded-2xl">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg font-bold text-white flex items-center gap-2">
                 <ListTodo className="w-5 h-5 text-primary" /> Subtasks
               </h2>
-              <button className="text-xs text-primary hover:underline">Add Subtask</button>
             </div>
+            
+            <form onSubmit={handleAddSubtask} className="flex gap-2 mb-4">
+              <input 
+                type="text"
+                placeholder="Add new subtask..."
+                value={newSubtask}
+                onChange={(e) => setNewSubtask(e.target.value)}
+                className="flex-1 bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary text-sm"
+              />
+              <button disabled={actionLoading || !newSubtask.trim()} type="submit" className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg text-sm font-medium transition-colors">
+                Add
+              </button>
+            </form>
+
             {task.subtasks?.length > 0 ? (
               <div className="space-y-2">
-                 {task.subtasks.map((st: any, i: number) => (
-                   <div key={i} className="flex items-center gap-3 p-3 bg-white/5 rounded-lg border border-white/5">
-                     <div className={`w-5 h-5 rounded border flex items-center justify-center ${st.isCompleted ? 'bg-green-500 border-green-500' : 'border-white/20'}`}>
+                 {task.subtasks.map((st: any) => (
+                   <div key={st._id} className="flex items-center gap-3 p-3 bg-white/5 rounded-lg border border-white/5 transition-colors hover:bg-white/10 cursor-pointer" onClick={() => handleToggleSubtask(st._id, st.isCompleted)}>
+                     <div className={`w-5 h-5 rounded border flex items-center justify-center transition-colors ${st.isCompleted ? 'bg-green-500 border-green-500' : 'border-white/20'}`}>
                        {st.isCompleted && <CheckCircle className="w-3 h-3 text-white" />}
                      </div>
                      <span className={`text-sm ${st.isCompleted ? 'text-gray-500 line-through' : 'text-gray-300'}`}>{st.title}</span>
@@ -114,6 +187,47 @@ export default function TaskDetailsPage() {
             ) : (
               <div className="text-sm text-gray-500 text-center py-4 border border-dashed border-white/10 rounded-lg">No subtasks created.</div>
             )}
+          </div>
+
+          {/* Comments Section */}
+          <div className="bg-card border border-white/10 p-6 rounded-2xl">
+            <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+              <MessageSquare className="w-5 h-5 text-primary" /> Comments & Activity
+            </h2>
+            
+            <div className="space-y-4 mb-6 max-h-[400px] overflow-y-auto custom-scrollbar pr-2">
+              {task.comments?.length > 0 ? (
+                task.comments.map((comment: any, i: number) => (
+                  <div key={i} className="flex gap-3">
+                    <div className="w-8 h-8 rounded-full bg-primary/20 flex-shrink-0 flex items-center justify-center text-primary font-bold text-xs mt-1">
+                      U
+                    </div>
+                    <div className="flex-1 bg-white/5 border border-white/10 rounded-xl p-3">
+                      <div className="flex justify-between items-start mb-1">
+                        <span className="font-medium text-white text-sm">User</span>
+                        <span className="text-xs text-gray-500">{new Date(comment.createdAt).toLocaleString()}</span>
+                      </div>
+                      <p className="text-gray-300 text-sm whitespace-pre-wrap">{comment.text}</p>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div className="text-center text-sm text-gray-500 py-4">No comments yet.</div>
+              )}
+            </div>
+
+            <form onSubmit={handleAddComment} className="flex gap-2">
+              <input 
+                type="text"
+                placeholder="Write a comment..."
+                value={newComment}
+                onChange={(e) => setNewComment(e.target.value)}
+                className="flex-1 bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary text-sm"
+              />
+              <button disabled={actionLoading || !newComment.trim()} type="submit" className="px-5 py-2 bg-primary hover:bg-red-700 text-white rounded-lg text-sm font-medium transition-colors">
+                Post
+              </button>
+            </form>
           </div>
 
         </div>

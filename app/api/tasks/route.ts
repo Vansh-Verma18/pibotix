@@ -36,9 +36,23 @@ export async function GET(req: NextRequest) {
     // If Admin/HR/ProjectManager, return all or filter by project
     const url = new URL(req.url);
     const projectId = url.searchParams.get('projectId');
+    const search = url.searchParams.get('search');
+    const department = url.searchParams.get('department');
+    const priority = url.searchParams.get('priority');
+    const status = url.searchParams.get('status');
     
     const query: any = {};
     if (projectId) query.projectId = projectId;
+    if (department && department !== 'all') query.department = department;
+    if (priority && priority !== 'all') query.priority = priority;
+    if (status && status !== 'all') query.status = status;
+
+    if (search) {
+      query.$or = [
+        { name: { $regex: search, $options: 'i' } },
+        { taskId: { $regex: search, $options: 'i' } }
+      ];
+    }
     
     if (decoded.role === 'employee') {
       query.assignedEmployee = new mongoose.Types.ObjectId(decoded.employeeId as string);
